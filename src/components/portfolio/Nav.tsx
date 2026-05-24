@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link, useLocation } from "@tanstack/react-router";
 
 const links = [
   { id: "home", label: "Home" },
@@ -10,8 +11,11 @@ const links = [
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("home");
+  const { pathname } = useLocation();
+  const isHome = pathname === "/";
 
   useEffect(() => {
+    if (!isHome) return;
     const onScroll = () => {
       setScrolled(window.scrollY > 20);
       const y = window.scrollY + 120;
@@ -25,7 +29,13 @@ export function Nav() {
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [isHome]);
+
+  useEffect(() => {
+    if (!isHome) {
+      setScrolled(window.scrollY > 20);
+    }
+  }, [isHome]);
 
   return (
     <header
@@ -33,31 +43,33 @@ export function Nav() {
         scrolled
           ? "bg-navy-deep/85 backdrop-blur-md border-b border-border"
           : "bg-transparent"
-      }`}
+      }`}`}
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="#home" className="font-display text-lg tracking-wide">
+        <Link to="/" hash="home" className="font-display text-lg tracking-wide">
           <span className="text-gold">N</span>eine <span className="text-foreground/80">Arora</span>
-        </a>
+        </Link>
         <nav className="hidden md:flex items-center gap-8">
           {links.map((l) => (
-            <a
+            <Link
               key={l.id}
-              href={`#${l.id}`}
+              to="/"
+              hash={l.id}
               className={`text-sm tracking-wide transition-colors ${
-                active === l.id ? "text-gold" : "text-foreground/70 hover:text-foreground"
+                isHome && active === l.id ? "text-gold" : "text-foreground/70 hover:text-foreground"
               }`}
             >
               {l.label}
-            </a>
+            </Link>
           ))}
         </nav>
-        <a
-          href="#contact"
+        <Link
+          to="/"
+          hash="contact"
           className="hidden md:inline-flex text-xs uppercase tracking-[0.2em] px-4 py-2 border border-gold/40 text-gold hover:bg-gold hover:text-primary-foreground transition-colors rounded-sm"
         >
           Connect
-        </a>
+        </Link>
       </div>
     </header>
   );
