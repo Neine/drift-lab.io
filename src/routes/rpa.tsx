@@ -2,7 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { Reveal } from "@/components/portfolio/Reveal";
 import { Nav } from "@/components/portfolio/Nav";
-import { TopicRibbon } from "@/components/portfolio/TopicRibbon";
 
 const capabilities = [
   { title: "UiPath & Blue Prism", desc: "Enterprise-grade bot development, orchestration, and credential management across distributed environments." },
@@ -25,8 +24,7 @@ function RPAPage() {
   return (
     <main className="bg-background text-foreground min-h-screen">
       <Nav />
-      <TopicRibbon />
-      <section className="relative pt-32 pb-24 px-6">
+      <section className="relative pt-24 pb-24 px-6">
         <div className="max-w-4xl mx-auto">
           <Reveal>
             <p className="text-xs uppercase tracking-[0.35em] text-gold mb-4">Domain</p>
