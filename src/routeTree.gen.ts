@@ -9,8 +9,32 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as RpaRouteImport } from './routes/rpa'
+import { Route as ProjectManagementRouteImport } from './routes/project-management'
+import { Route as LeanSigmaRouteImport } from './routes/lean-sigma'
+import { Route as AiRouteImport } from './routes/ai'
 import { Route as IndexRouteImport } from './routes/index'
 
+const RpaRoute = RpaRouteImport.update({
+  id: '/rpa',
+  path: '/rpa',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectManagementRoute = ProjectManagementRouteImport.update({
+  id: '/project-management',
+  path: '/project-management',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LeanSigmaRoute = LeanSigmaRouteImport.update({
+  id: '/lean-sigma',
+  path: '/lean-sigma',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AiRoute = AiRouteImport.update({
+  id: '/ai',
+  path: '/ai',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +43,72 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/ai': typeof AiRoute
+  '/lean-sigma': typeof LeanSigmaRoute
+  '/project-management': typeof ProjectManagementRoute
+  '/rpa': typeof RpaRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/ai': typeof AiRoute
+  '/lean-sigma': typeof LeanSigmaRoute
+  '/project-management': typeof ProjectManagementRoute
+  '/rpa': typeof RpaRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/ai': typeof AiRoute
+  '/lean-sigma': typeof LeanSigmaRoute
+  '/project-management': typeof ProjectManagementRoute
+  '/rpa': typeof RpaRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/ai' | '/lean-sigma' | '/project-management' | '/rpa'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/ai' | '/lean-sigma' | '/project-management' | '/rpa'
+  id: '__root__' | '/' | '/ai' | '/lean-sigma' | '/project-management' | '/rpa'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AiRoute: typeof AiRoute
+  LeanSigmaRoute: typeof LeanSigmaRoute
+  ProjectManagementRoute: typeof ProjectManagementRoute
+  RpaRoute: typeof RpaRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/rpa': {
+      id: '/rpa'
+      path: '/rpa'
+      fullPath: '/rpa'
+      preLoaderRoute: typeof RpaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/project-management': {
+      id: '/project-management'
+      path: '/project-management'
+      fullPath: '/project-management'
+      preLoaderRoute: typeof ProjectManagementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lean-sigma': {
+      id: '/lean-sigma'
+      path: '/lean-sigma'
+      fullPath: '/lean-sigma'
+      preLoaderRoute: typeof LeanSigmaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ai': {
+      id: '/ai'
+      path: '/ai'
+      fullPath: '/ai'
+      preLoaderRoute: typeof AiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,7 +121,21 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AiRoute: AiRoute,
+  LeanSigmaRoute: LeanSigmaRoute,
+  ProjectManagementRoute: ProjectManagementRoute,
+  RpaRoute: RpaRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
