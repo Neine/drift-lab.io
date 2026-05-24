@@ -1,0 +1,64 @@
+import { useEffect, useState } from "react";
+
+const links = [
+  { id: "home", label: "Home" },
+  { id: "about", label: "About" },
+  { id: "experience", label: "Experience" },
+  { id: "contact", label: "Contact" },
+];
+
+export function Nav() {
+  const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState("home");
+
+  useEffect(() => {
+    const onScroll = () => {
+      setScrolled(window.scrollY > 20);
+      const y = window.scrollY + 120;
+      for (const l of links) {
+        const el = document.getElementById(l.id);
+        if (el && el.offsetTop <= y && el.offsetTop + el.offsetHeight > y) {
+          setActive(l.id);
+        }
+      }
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-navy-deep/85 backdrop-blur-md border-b border-border"
+          : "bg-transparent"
+      }`}
+    >
+      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        <a href="#home" className="font-display text-lg tracking-wide">
+          <span className="text-gold">N</span>eine <span className="text-foreground/80">Arora</span>
+        </a>
+        <nav className="hidden md:flex items-center gap-8">
+          {links.map((l) => (
+            <a
+              key={l.id}
+              href={`#${l.id}`}
+              className={`text-sm tracking-wide transition-colors ${
+                active === l.id ? "text-gold" : "text-foreground/70 hover:text-foreground"
+              }`}
+            >
+              {l.label}
+            </a>
+          ))}
+        </nav>
+        <a
+          href="#contact"
+          className="hidden md:inline-flex text-xs uppercase tracking-[0.2em] px-4 py-2 border border-gold/40 text-gold hover:bg-gold hover:text-primary-foreground transition-colors rounded-sm"
+        >
+          Connect
+        </a>
+      </div>
+    </header>
+  );
+}
