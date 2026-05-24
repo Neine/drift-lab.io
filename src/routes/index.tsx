@@ -40,6 +40,7 @@ function Index() {
     <main className="bg-background text-foreground">
       <Toaster theme="dark" position="bottom-right" />
       <Nav />
+      <TopicRibbon />
       <Hero />
       <About />
       <Experience />
