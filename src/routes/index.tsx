@@ -1,26 +1,48 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Toaster } from "sonner";
+import { Nav } from "@/components/portfolio/Nav";
+import { Hero } from "@/components/portfolio/Hero";
+import { About } from "@/components/portfolio/About";
+import { Experience } from "@/components/portfolio/Experience";
+import { Contact } from "@/components/portfolio/Contact";
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Neine Arora — VP, Business Transformation & Program Management" },
+      {
+        name: "description",
+        content:
+          "Portfolio of Neine Arora, Vice President at Deutsche Bank. 13+ years driving banking transformation with Lean Six Sigma, PMP, RPA and AI/ML.",
+      },
+      { property: "og:title", content: "Neine Arora — Business Transformation Leader" },
+      {
+        property: "og:description",
+        content:
+          "Solving critical banking challenges through technology, innovation, and 13+ years of transformation expertise.",
+      },
+    ],
+    links: [
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,800;1,500;1,700&family=DM+Sans:wght@300;400;500;600&display=swap",
+      },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
-
 function Index() {
-  return <PlaceholderIndex />;
+  return (
+    <main className="bg-background text-foreground">
+      <Toaster theme="dark" position="bottom-right" />
+      <Nav />
+      <Hero />
+      <About />
+      <Experience />
+      <Contact />
+    </main>
+  );
 }
