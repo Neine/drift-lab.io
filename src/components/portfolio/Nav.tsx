@@ -43,7 +43,7 @@ export function Nav() {
         scrolled
           ? "bg-navy-deep/85 backdrop-blur-md border-b border-border"
           : "bg-transparent"
-      }`}`}
+      }`}
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         <Link to="/" hash="home" className="font-display text-lg tracking-wide">
