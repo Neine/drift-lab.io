@@ -37,9 +37,9 @@ const projects = [
     tags: ["R", "Tableau", "Predictive Modeling"],
   },
   {
-    title: "Data Centralisation",
+    title: "Fixed Income Rates Platform Transformation",
     category: "Platform Transformation",
-    desc: "Spearheading platform simplification initiative at Deutsche Bank — consolidating data pipelines for same-day finance reporting.",
+    desc: "Successfully led the end-to-end replacement of a legacy settlement system for the Fixed Income Rates product line. The project involved a comprehensive analysis of the existing operational landscape to design and execute a modern, highly optimized architecture. The new system establishes unified data alignment across the entire trade lifecycle—from initial execution through final clearing and compliance.",
     impact: "T+1 → T0 close",
     tags: ["Data Platform", "Finance", "Simplification"],
   },
