@@ -43,6 +43,13 @@ const projects = [
     impact: "T+1 → T0 close",
     tags: ["Data Platform", "Finance", "Simplification"],
   },
+  {
+    title: "Automation Project Showcase",
+    category: "Automation",
+    desc: "Placeholder",
+    impact: "Coming soon",
+    tags: ["Automation", "Showcase"],
+  },
 ];
 
 export function Projects() {
