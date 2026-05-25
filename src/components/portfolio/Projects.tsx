@@ -37,7 +37,7 @@ const projects = [
     tags: ["R", "Tableau", "Predictive Modeling"],
   },
   {
-    title: "T0 Data Industrialisation",
+    title: "Data Centralisation",
     category: "Platform Transformation",
     desc: "Spearheading platform simplification initiative at Deutsche Bank — consolidating data pipelines for same-day finance reporting.",
     impact: "T+1 → T0 close",
