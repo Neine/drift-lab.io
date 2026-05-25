@@ -50,6 +50,7 @@ const projects = [
     impact: "Coming soon",
     tags: ["Automation", "Showcase"],
   },
+];
 
 export function Projects() {
   return (
