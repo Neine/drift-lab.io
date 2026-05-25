@@ -23,9 +23,9 @@ const projects = [
     tags: ["UiPath", "RPA", "Governance"],
   },
   {
-    title: "Architected, designed, and deployed advanced Agentic AI workflows to automate high-volume, repetitive financial operations across multiple Corporate Banking (CB) divisions. By implementing autonomous, goal-oriented AI agents, the project successfully converted manual processes into scalable, intelligent workflows—specifically targetting SEPA payments in Cash, Bank Guarantees, and Collections processes in Trade Finance.",
-    category: "AI & Automation",
-    desc: "Data Industrialisation",
+    title: "SSI Automated Broadcast Solution",
+    category: "Operational Efficiency",
+    desc: "Designed and implemented an automated solution to streamline Standard Settlement Instruction (SSI) management. The project eliminated manual operational overhead by establishing a single, centralized SSI repository. This system automatically captures data inflows directly from client onboarding platforms and seamlessly broadcasts validated SSI data downstream to multiple internal settlement systems",
     impact: "Strategic Scale",
     tags: ["Agentic AI", "Corporate Banking", "Trade Finance"],
   },
