@@ -25,7 +25,7 @@ const projects = [
   {
     title: "Architected, designed, and deployed advanced Agentic AI workflows to automate high-volume, repetitive financial operations across multiple Corporate Banking (CB) divisions. By implementing autonomous, goal-oriented AI agents, the project successfully converted manual processes into scalable, intelligent workflows—specifically targetting SEPA payments in Cash, Bank Guarantees, and Collections processes in Trade Finance.",
     category: "AI & Automation",
-    desc: "Implementing autonomous, goal-oriented AI agents to convert manual processes into scalable, intelligent workflows.",
+    desc: "Data Industrialisation",
     impact: "Strategic Scale",
     tags: ["Agentic AI", "Corporate Banking", "Trade Finance"],
   },
