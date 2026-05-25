@@ -11,7 +11,7 @@ const projects = [
   {
     title: "Agentic Automation for Static Processes",
     category: "AI & Automation",
-    desc: "Designed and deployed agentic AI workflows automating repetitive finance operations across IB & CB divisions.",
+    desc: "Architected, designed, and deployed advanced Agentic AI workflows to automate high-volume, repetitive financial operations across multiple Corporate Banking (CB) divisions. By implementing autonomous, goal-oriented AI agents, the project successfully converted manual processes into scalable, intelligent workflows—specifically targetting SEPA payments, Bank Guarantees, and Collections processes.",
     impact: "60% manual effort reduction",
     tags: ["Agentic AI", "LLM", "Process Automation"],
   },
