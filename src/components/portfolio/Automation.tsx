@@ -21,7 +21,7 @@ export function Automation() {
         </Reveal>
         <Reveal delay={0.1}>
           <h2 className="text-4xl md:text-6xl font-bold mb-4 max-w-3xl">
-            Linear Regression <span className="italic gold-gradient-text">Showcase</span>
+            Artificial <span className="italic gold-gradient-text">Intelligence</span>
           </h2>
         </Reveal>
         <Reveal delay={0.15}>
