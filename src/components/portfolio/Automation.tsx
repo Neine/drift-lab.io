@@ -8,6 +8,20 @@ const items = [
     impact: "Coming soon",
     tags: ["Linear Regression", "Showcase"],
   },
+  {
+    title: "Project Two",
+    category: "Classification",
+    desc: "Placeholder",
+    impact: "Coming soon",
+    tags: ["Classification", "Showcase"],
+  },
+  {
+    title: "Project Three",
+    category: "Clustering",
+    desc: "Placeholder",
+    impact: "Coming soon",
+    tags: ["Clustering", "Showcase"],
+  },
 ];
 
 export function Automation() {
