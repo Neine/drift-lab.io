@@ -2,11 +2,11 @@ import { Reveal } from "./Reveal";
 
 const items = [
   {
-    title: "Automation Project Showcase",
-    category: "Automation",
+    title: "Bike Sharing",
+    category: "Linear Regression",
     desc: "Placeholder",
     impact: "Coming soon",
-    tags: ["Automation", "Showcase"],
+    tags: ["Linear Regression", "Showcase"],
   },
 ];
 
@@ -16,12 +16,12 @@ export function Automation() {
       <div className="max-w-6xl mx-auto">
         <Reveal>
           <p className="text-xs uppercase tracking-[0.35em] text-gold mb-4">
-            — 04 / Automation
+            — 04 / Linear Regression
           </p>
         </Reveal>
         <Reveal delay={0.1}>
           <h2 className="text-4xl md:text-6xl font-bold mb-4 max-w-3xl">
-            Automation <span className="italic gold-gradient-text">Showcase</span>
+            Linear Regression <span className="italic gold-gradient-text">Showcase</span>
           </h2>
         </Reveal>
         <Reveal delay={0.15}>
