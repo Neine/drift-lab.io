@@ -3,10 +3,10 @@ import { Reveal } from "./Reveal";
 const items = [
   {
     title: "Bike Sharing",
-    category: "Linear Regression",
+    category: "AI Automation",
     desc: "Placeholder",
     impact: "Coming soon",
-    tags: ["Linear Regression", "Showcase"],
+    tags: ["AI Automation", "Showcase"],
   },
   {
     title: "Project Two",
