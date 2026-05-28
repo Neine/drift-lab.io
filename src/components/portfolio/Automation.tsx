@@ -16,7 +16,7 @@ export function Automation() {
       <div className="max-w-6xl mx-auto">
         <Reveal>
           <p className="text-xs uppercase tracking-[0.35em] text-gold mb-4">
-            — 04 / Linear Regression
+            — 04 / AI Projects Showcase
           </p>
         </Reveal>
         <Reveal delay={0.1}>
