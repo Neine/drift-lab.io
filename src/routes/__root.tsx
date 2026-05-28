@@ -72,14 +72,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "Product Roadmap & Strategy" },
+      { name: "description", content: "Neine Arora's personal portfolio showcases her expertise in business transformation and program management." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "Product Roadmap & Strategy" },
+      { property: "og:description", content: "Neine Arora's personal portfolio showcases her expertise in business transformation and program management." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Product Roadmap & Strategy" },
+      { name: "twitter:description", content: "Neine Arora's personal portfolio showcases her expertise in business transformation and program management." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/L9hnVqPa5ARkfZqLKQeoKMZiHIt1/social-images/social-1779966453713-9V3A6612_2.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/L9hnVqPa5ARkfZqLKQeoKMZiHIt1/social-images/social-1779966453713-9V3A6612_2.webp" },
     ],
     links: [
       {
