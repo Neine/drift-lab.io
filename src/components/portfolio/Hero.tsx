@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { Github } from "lucide-react";
 
 const credentials = [
   { icon: "🏅", label: "Lean Six Sigma Black Belt" },
