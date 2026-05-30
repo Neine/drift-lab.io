@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { Github } from "lucide-react";
 
 const credentials = [
   { icon: "🏅", label: "Lean Six Sigma Black Belt" },
@@ -127,10 +128,10 @@ export function Hero() {
             href="https://github.com/Neine"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-7 py-3.5 border border-foreground/30 text-foreground hover:border-gold hover:text-gold transition-colors rounded-sm"
+            aria-label="GitHub"
+            className="inline-flex items-center justify-center size-[50px] border border-foreground/30 text-foreground hover:border-gold hover:text-gold transition-colors rounded-sm"
           >
-            GitHub
-            <span aria-hidden>↗</span>
+            <Github className="size-5" />
           </a>
         </motion.div>
       </div>
