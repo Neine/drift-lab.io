@@ -123,6 +123,15 @@ export function Hero() {
           >
             Get In Touch
           </a>
+          <a
+            href="https://github.com/Neine"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-7 py-3.5 border border-foreground/30 text-foreground hover:border-gold hover:text-gold transition-colors rounded-sm"
+          >
+            GitHub
+            <span aria-hidden>↗</span>
+          </a>
         </motion.div>
       </div>
 
