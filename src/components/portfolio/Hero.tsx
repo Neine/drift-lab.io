@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { Github } from "lucide-react";
+import neineAsset from "@/assets/neine.jpg.asset.json";
 
 const credentials = [
   { icon: "🏅", label: "Lean Six Sigma Black Belt" },
@@ -58,14 +59,24 @@ export function Hero() {
           — Portfolio · 2026
         </motion.p>
 
-        <motion.h1
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05] mb-6"
+          className="flex items-center gap-5 md:gap-7 mb-6"
         >
-          Neine <span className="gold-gradient-text italic">Arora</span>
-        </motion.h1>
+          <motion.img
+            src={neineAsset.url}
+            alt="Neine Arora"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+            className="size-20 md:size-28 lg:size-32 rounded-full object-cover border-2 border-gold/60 shadow-lg shadow-gold/20 shrink-0"
+          />
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05]">
+            Neine <span className="gold-gradient-text italic">Arora</span>
+          </h1>
+        </motion.div>
 
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
