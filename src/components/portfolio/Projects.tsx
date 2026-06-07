@@ -51,7 +51,7 @@ export function Projects() {
       <div className="max-w-6xl mx-auto">
         <Reveal>
           <p className="text-xs uppercase tracking-[0.35em] text-gold mb-4">
-            — 02 / Projects
+            — 03 / Projects
           </p>
         </Reveal>
         <Reveal delay={0.1}>
