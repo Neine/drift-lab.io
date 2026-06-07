@@ -83,9 +83,6 @@ export function Automation() {
             </Reveal>
           ))}
         </div>
-            </Reveal>
-          ))}
-        </div>
       </div>
     </section>
   );
