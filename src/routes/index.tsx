@@ -43,9 +43,9 @@ function Index() {
       <Nav />
       <Hero />
       <About />
-      <Experience />
       <Projects />
       <Automation />
+      <Experience />
       <Contact />
     </main>
   );
