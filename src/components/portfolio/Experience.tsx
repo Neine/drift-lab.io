@@ -124,6 +124,6 @@ export function Experience() {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
