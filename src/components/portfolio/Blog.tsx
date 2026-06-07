@@ -53,7 +53,12 @@ export function Blog() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {posts.map((p, i) => (
             <Reveal key={p.title} delay={i * 0.05}>
-              <article className="group h-full bg-card/60 backdrop-blur-sm border border-border rounded-lg p-6 hover:border-gold/50 transition-all hover:-translate-y-1 hover:shadow-2xl hover:shadow-gold/5 flex flex-col cursor-pointer">
+              <a
+                href={p.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group h-full bg-card/60 backdrop-blur-sm border border-border rounded-lg p-6 hover:border-gold/50 transition-all hover:-translate-y-1 hover:shadow-2xl hover:shadow-gold/5 flex flex-col cursor-pointer"
+              >
                 <div className="flex items-center gap-3 mb-4 text-xs uppercase tracking-[0.2em]">
                   <span className="text-gold/80">{p.category}</span>
                   <span className="text-foreground/30">•</span>
@@ -68,10 +73,10 @@ export function Blog() {
                 <div className="border-t border-border pt-4 flex items-center justify-between">
                   <span className="text-xs text-foreground/50">{p.readTime}</span>
                   <span className="text-xs uppercase tracking-[0.2em] text-gold group-hover:translate-x-1 transition-transform">
-                    Read →
+                    Read on LinkedIn →
                   </span>
                 </div>
-              </article>
+              </a>
             </Reveal>
           ))}
         </div>
