@@ -105,6 +105,8 @@ export function About() {
             ))}
           </div>
         </Reveal>
+
+        <Experience />
       </div>
     </section>
   );
