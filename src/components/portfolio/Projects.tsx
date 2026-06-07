@@ -6,7 +6,7 @@ const projects = [
     category: "Data & Analytics",
     desc: "Built a real-time cash visibility platform using Google Looker, enabling treasury teams to monitor liquidity positions across global entities.",
     impact: "40% faster reconciliation",
-    tags: ["Google Looker", "Data Industrialisation", "Treasury"],
+    tags: ["Google Looker", "Data Industrialisation", "Conversational AI"],
   },
   {
     title: "Agentic Automation for Static Processes",
