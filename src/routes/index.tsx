@@ -3,7 +3,7 @@ import { Toaster } from "sonner";
 import { Nav } from "@/components/portfolio/Nav";
 import { Hero } from "@/components/portfolio/Hero";
 import { About } from "@/components/portfolio/About";
-import { Experience } from "@/components/portfolio/Experience";
+
 import { Contact } from "@/components/portfolio/Contact";
 import { Projects } from "@/components/portfolio/Projects";
 import { Automation } from "@/components/portfolio/Automation";
