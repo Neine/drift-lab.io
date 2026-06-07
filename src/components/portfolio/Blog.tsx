@@ -4,7 +4,7 @@ const posts = [
   {
     date: "Jun 2026",
     category: "Product & ML",
-    title: "Product Management and ML",
+    title: "The Product Layer Most ML Teams Skip",
     excerpt:
       "Most machine learning projects are technically impressive — but the ones that ship value are the ones shaped by strong product thinking.",
     readTime: "3 min read",
@@ -13,7 +13,7 @@ const posts = [
   {
     date: "Jun 2026",
     category: "Responsible AI",
-    title: "Responsible AI",
+    title: "Trust by Design: A Note on Responsible AI",
     excerpt:
       "Notes on building AI systems that are trustworthy, transparent, and accountable by design — not as an afterthought.",
     readTime: "3 min read",
@@ -22,7 +22,7 @@ const posts = [
   {
     date: "Jun 2026",
     category: "Digital Banking",
-    title: "Digital Banking",
+    title: "The Quiet Reinvention of Digital Banking",
     excerpt:
       "Reflections on how digital banking continues to reshape customer experience, operations, and the role of automation.",
     readTime: "3 min read",
