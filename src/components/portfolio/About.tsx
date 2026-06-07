@@ -29,7 +29,7 @@ export function About() {
       <div className="max-w-6xl mx-auto">
         <Reveal>
           <p className="text-xs uppercase tracking-[0.35em] text-gold mb-4">
-            — 04 / About
+            — 04 / About &amp; Experience
           </p>
         </Reveal>
         <Reveal delay={0.1}>
