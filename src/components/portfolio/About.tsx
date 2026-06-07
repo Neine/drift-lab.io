@@ -28,7 +28,7 @@ export function About() {
       <div className="max-w-6xl mx-auto">
         <Reveal>
           <p className="text-xs uppercase tracking-[0.35em] text-gold mb-4">
-            — 01 / About
+            — 04 / About
           </p>
         </Reveal>
         <Reveal delay={0.1}>

@@ -42,9 +42,9 @@ function Index() {
       <Toaster theme="dark" position="bottom-right" />
       <Nav />
       <Hero />
-      <About />
       <Projects />
       <Automation />
+      <About />
       <Experience />
       <Contact />
     </main>
