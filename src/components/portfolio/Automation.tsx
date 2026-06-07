@@ -2,27 +2,23 @@ import { Reveal } from "./Reveal";
 
 const items = [
   {
-    title: "Bike Sharing",
-    category: "AI Project Showcase",
-    desc: "Placeholder",
-    impact: "Coming soon",
-    tags: ["AI Project Showcase", "Showcase"],
+    title: "Bike Sharing Demand",
+    category: "Linear Regression",
+    desc: "Built a multiple linear regression model to predict shared-bike demand for an American provider, identifying the key variables that drive ridership post-pandemic.",
+    impact: "R² ~ 0.83 on test set",
+    tags: ["Python", "Linear Regression", "EDA"],
+    href: "https://github.com/Neine/Bike-Sharing",
   },
   {
-    title: "Project Two",
-    category: "Classification",
-    desc: "Placeholder",
-    impact: "Coming soon",
-    tags: ["Classification", "Showcase"],
-  },
-  {
-    title: "Project Three",
-    category: "Clustering",
-    desc: "Placeholder",
-    impact: "Coming soon",
-    tags: ["Clustering", "Showcase"],
+    title: "Telecom Churn",
+    category: "Logistic Regression",
+    desc: "Developed a logistic regression model to predict high-value customer churn for a telecom operator and recommended retention levers from the top predictors.",
+    impact: "Reduced churn risk on top decile",
+    tags: ["Python", "Logistic Regression", "Classification"],
+    href: "https://github.com/Neine/Telecom_Churn",
   },
 ];
+
 
 export function Automation() {
   return (
