@@ -18,7 +18,7 @@ export function Contact() {
       <div className="max-w-6xl mx-auto">
         <Reveal>
           <p className="text-xs uppercase tracking-[0.35em] text-gold mb-4">
-            — 03 / Contact
+            — 06 / Contact
           </p>
         </Reveal>
         <Reveal delay={0.1}>
