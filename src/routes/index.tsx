@@ -47,7 +47,7 @@ function Index() {
       <Projects />
       <Automation />
       <About />
-      <Experience />
+      
       <Contact />
     </main>
   );
