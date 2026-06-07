@@ -3,27 +3,30 @@ import { Reveal } from "./Reveal";
 const posts = [
   {
     date: "Jun 2026",
-    category: "AI & Automation",
-    title: "The Rise of Agentic AI in Corporate Banking",
+    category: "Product & ML",
+    title: "Product Management and ML",
     excerpt:
-      "How autonomous AI agents are reshaping high-volume financial operations — from SEPA payments to bank guarantees.",
-    readTime: "6 min read",
+      "Most machine learning projects are technically impressive — but the ones that ship value are the ones shaped by strong product thinking.",
+    readTime: "3 min read",
+    url: "https://www.linkedin.com/feed/update/urn:li:activity:7468171124846002176/",
   },
   {
-    date: "May 2026",
-    category: "Transformation",
-    title: "From RPA to Intelligent Automation: A Practitioner's View",
+    date: "Jun 2026",
+    category: "Responsible AI",
+    title: "Responsible AI",
     excerpt:
-      "Lessons learned scaling automation programs from 30 processes to enterprise-wide adoption across global banks.",
-    readTime: "8 min read",
+      "Notes on building AI systems that are trustworthy, transparent, and accountable by design — not as an afterthought.",
+    readTime: "3 min read",
+    url: "https://www.linkedin.com/feed/update/urn:li:activity:7468198356016594945/",
   },
   {
-    date: "Apr 2026",
-    category: "Leadership",
-    title: "Leading Transformation in Regulated Industries",
+    date: "Jun 2026",
+    category: "Digital Banking",
+    title: "Digital Banking",
     excerpt:
-      "Balancing innovation, governance, and delivery in environments where compliance is non-negotiable.",
-    readTime: "5 min read",
+      "Reflections on how digital banking continues to reshape customer experience, operations, and the role of automation.",
+    readTime: "3 min read",
+    url: "https://www.linkedin.com/feed/update/urn:li:activity:7468688931731976193/",
   },
 ];
 
@@ -50,7 +53,12 @@ export function Blog() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {posts.map((p, i) => (
             <Reveal key={p.title} delay={i * 0.05}>
-              <article className="group h-full bg-card/60 backdrop-blur-sm border border-border rounded-lg p-6 hover:border-gold/50 transition-all hover:-translate-y-1 hover:shadow-2xl hover:shadow-gold/5 flex flex-col cursor-pointer">
+              <a
+                href={p.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group h-full bg-card/60 backdrop-blur-sm border border-border rounded-lg p-6 hover:border-gold/50 transition-all hover:-translate-y-1 hover:shadow-2xl hover:shadow-gold/5 flex flex-col cursor-pointer"
+              >
                 <div className="flex items-center gap-3 mb-4 text-xs uppercase tracking-[0.2em]">
                   <span className="text-gold/80">{p.category}</span>
                   <span className="text-foreground/30">•</span>
@@ -65,10 +73,10 @@ export function Blog() {
                 <div className="border-t border-border pt-4 flex items-center justify-between">
                   <span className="text-xs text-foreground/50">{p.readTime}</span>
                   <span className="text-xs uppercase tracking-[0.2em] text-gold group-hover:translate-x-1 transition-transform">
-                    Read →
+                    Read on LinkedIn →
                   </span>
                 </div>
-              </article>
+              </a>
             </Reveal>
           ))}
         </div>
