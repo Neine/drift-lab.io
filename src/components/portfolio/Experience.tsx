@@ -57,7 +57,7 @@ export function Experience() {
       <div className="max-w-6xl mx-auto">
         <Reveal>
           <p className="text-xs uppercase tracking-[0.35em] text-gold mb-4">
-            — 02 / Experience
+            — 04 / Experience
           </p>
         </Reveal>
         <Reveal delay={0.1}>
