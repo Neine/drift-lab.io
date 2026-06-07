@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { Reveal } from "./Reveal";
+import { Experience } from "./Experience";
 
 const skills = [
   "Program Management",
