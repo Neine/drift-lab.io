@@ -44,8 +44,8 @@ function Index() {
       <Nav />
       <Hero />
       <Blog />
-      <Projects />
       <Automation />
+      <Projects />
       <About />
       
       <Contact />
