@@ -53,17 +53,17 @@ const items = [
 
 export function Experience() {
   return (
-    <section id="experience" className="relative py-32 px-6 bg-navy-elevated/30">
-      <div className="max-w-6xl mx-auto">
+    <div className="mt-24">
+      <div>
         <Reveal>
-          <p className="text-xs uppercase tracking-[0.35em] text-gold mb-4">
-            — 05 / Experience
+          <p className="text-xs uppercase tracking-[0.25em] text-foreground/50 mb-5">
+            Experience
           </p>
         </Reveal>
         <Reveal delay={0.1}>
-          <h2 className="text-4xl md:text-6xl font-bold mb-4 max-w-3xl">
+          <h3 className="text-3xl md:text-5xl font-bold mb-4 max-w-3xl">
             Selected <span className="italic gold-gradient-text">Projects</span> &amp; Roles
-          </h2>
+          </h3>
         </Reveal>
         <Reveal delay={0.15}>
           <p className="text-foreground/60 mb-16 max-w-2xl">
@@ -124,6 +124,6 @@ export function Experience() {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

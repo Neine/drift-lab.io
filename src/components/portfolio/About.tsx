@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { Reveal } from "./Reveal";
+import { Experience } from "./Experience";
 
 const skills = [
   "Program Management",
@@ -28,7 +29,7 @@ export function About() {
       <div className="max-w-6xl mx-auto">
         <Reveal>
           <p className="text-xs uppercase tracking-[0.35em] text-gold mb-4">
-            — 04 / About
+            — 04 / About &amp; Experience
           </p>
         </Reveal>
         <Reveal delay={0.1}>
@@ -104,6 +105,8 @@ export function About() {
             ))}
           </div>
         </Reveal>
+
+        <Experience />
       </div>
     </section>
   );
