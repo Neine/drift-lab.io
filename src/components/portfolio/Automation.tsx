@@ -1,7 +1,24 @@
+import { useState, useCallback } from "react";
 import { Reveal } from "./Reveal";
 import ragAgentImg from "@/assets/RAG_Agent_Snip2.png.asset.json";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { ChevronLeft, ChevronRight, ZoomIn } from "lucide-react";
 
-const items = [
+interface ProjectItem {
+  title: string;
+  category: string;
+  desc: string;
+  impact: string;
+  tags: string[];
+  href: string;
+  image?: string;
+}
+
+const items: ProjectItem[] = [
   {
     title: "RAG-Agent",
     category: "Generative AI",
@@ -29,8 +46,30 @@ const items = [
   },
 ];
 
-
 export function Automation() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const imageItems = items.filter((p) => p.image);
+  const currentImageItem = openIndex !== null ? imageItems[openIndex] : null;
+
+  const handlePrev = useCallback(() => {
+    if (openIndex === null) return;
+    setOpenIndex(openIndex === 0 ? imageItems.length - 1 : openIndex - 1);
+  }, [openIndex, imageItems.length]);
+
+  const handleNext = useCallback(() => {
+    if (openIndex === null) return;
+    setOpenIndex(openIndex === imageItems.length - 1 ? 0 : openIndex + 1);
+  }, [openIndex, imageItems.length]);
+
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent) => {
+      if (e.key === "ArrowLeft") handlePrev();
+      if (e.key === "ArrowRight") handleNext();
+    },
+    [handlePrev, handleNext]
+  );
+
   return (
     <section id="automation" className="relative py-32 px-6">
       <div className="max-w-6xl mx-auto">
@@ -61,11 +100,26 @@ export function Automation() {
               >
                 <article className="group h-full bg-card/60 backdrop-blur-sm border border-border rounded-lg p-6 hover:border-gold/50 transition-all hover:-translate-y-1 hover:shadow-2xl hover:shadow-gold/5 flex flex-col">
                   {p.image && (
-                    <img
-                      src={p.image}
-                      alt={`${p.title} preview`}
-                      className="w-full h-40 object-cover rounded-md mb-4 border border-border"
-                    />
+                    <div
+                      className="relative w-full h-40 rounded-md mb-4 border border-border overflow-hidden cursor-zoom-in"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        const idx = imageItems.findIndex(
+                          (img) => img.title === p.title
+                        );
+                        setOpenIndex(idx);
+                      }}
+                    >
+                      <img
+                        src={p.image}
+                        alt={`${p.title} preview`}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                        <ZoomIn className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity drop-shadow-lg" />
+                      </div>
+                    </div>
                   )}
                   <p className="text-xs uppercase tracking-[0.2em] text-gold/80 mb-3">
                     {p.category}
@@ -101,6 +155,64 @@ export function Automation() {
           ))}
         </div>
       </div>
+
+      <Dialog
+        open={openIndex !== null}
+        onOpenChange={(open) => {
+          if (!open) setOpenIndex(null);
+        }}
+      >
+        <DialogContent
+          className="max-w-5xl w-[95vw] p-0 border-0 bg-transparent shadow-none"
+          onKeyDown={handleKeyDown}
+        >
+          <DialogTitle className="sr-only">
+            {currentImageItem?.title ?? "Project preview"}
+          </DialogTitle>
+          <div className="relative flex items-center justify-center">
+            {imageItems.length > 1 && (
+              <button
+                onClick={handlePrev}
+                className="absolute left-2 md:left-4 z-10 p-2 rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors backdrop-blur-sm"
+                aria-label="Previous image"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+            )}
+
+            {currentImageItem?.image && (
+              <img
+                src={currentImageItem.image}
+                alt={`${currentImageItem.title} full preview`}
+                className="max-h-[80vh] w-auto rounded-lg border border-border shadow-2xl"
+              />
+            )}
+
+            {imageItems.length > 1 && (
+              <button
+                onClick={handleNext}
+                className="absolute right-2 md:right-4 z-10 p-2 rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors backdrop-blur-sm"
+                aria-label="Next image"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            )}
+          </div>
+
+          {currentImageItem && (
+            <div className="text-center mt-3">
+              <p className="text-sm text-foreground/80 font-medium">
+                {currentImageItem.title}
+              </p>
+              {imageItems.length > 1 && (
+                <p className="text-xs text-foreground/50 mt-1">
+                  {openIndex !== null ? openIndex + 1 : 0} / {imageItems.length}
+                </p>
+              )}
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 }
