@@ -2,6 +2,14 @@ import { Reveal } from "./Reveal";
 
 const items = [
   {
+    title: "RAG-Agent",
+    category: "Generative AI",
+    desc: "Built a Retrieval-Augmented Generation agent that reads policy documents and answers customer queries grounded in the source material, reducing hallucination and improving response accuracy.",
+    impact: "Accurate, source-grounded Q&A",
+    tags: ["Python", "RAG", "LLM", "Agentic AI"],
+    href: "https://github.com/Neine/RAG-Agent",
+  },
+  {
     title: "Bike Sharing Demand",
     category: "Linear Regression",
     desc: "Built a multiple linear regression model to predict shared-bike demand for an American provider, identifying the key variables that drive ridership post-pandemic.",
