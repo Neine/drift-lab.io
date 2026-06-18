@@ -1,4 +1,5 @@
 import { Reveal } from "./Reveal";
+import ragAgentImg from "@/assets/RAG_Agent_Snip2.png.asset.json";
 
 const items = [
   {
