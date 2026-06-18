@@ -9,6 +9,7 @@ const items = [
     impact: "Accurate, source-grounded Q&A",
     tags: ["Python", "RAG", "LLM", "Agentic AI"],
     href: "https://github.com/Neine/RAG-Agent",
+    image: ragAgentImg.url,
   },
   {
     title: "Bike Sharing Demand",
