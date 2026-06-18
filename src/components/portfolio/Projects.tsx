@@ -2,9 +2,9 @@ import { Reveal } from "./Reveal";
 
 const projects = [
   {
-    title: "Cash Telemetry Platform",
+    title: "Conversational Analytics",
     category: "Data & Analytics",
-    desc: "Built a real-time cash visibility platform using Google Looker, enabling treasury teams to monitor liquidity positions across global entities.",
+    desc: "Built a real-time cash visibility platform using Google Looker, enabling middle office teams to monitor metrics across global entities. The Data agent grounded in the Looker semantic modeling layer, so it answers governed, trusted natural-language questions rather than freeform SQL guesses.",
     impact: "40% faster reconciliation",
     tags: ["Google Looker", "Data Industrialisation", "Conversational AI"],
   },
