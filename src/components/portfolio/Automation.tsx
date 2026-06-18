@@ -60,6 +60,13 @@ export function Automation() {
                 className="block h-full"
               >
                 <article className="group h-full bg-card/60 backdrop-blur-sm border border-border rounded-lg p-6 hover:border-gold/50 transition-all hover:-translate-y-1 hover:shadow-2xl hover:shadow-gold/5 flex flex-col">
+                  {p.image && (
+                    <img
+                      src={p.image}
+                      alt={`${p.title} preview`}
+                      className="w-full h-40 object-cover rounded-md mb-4 border border-border"
+                    />
+                  )}
                   <p className="text-xs uppercase tracking-[0.2em] text-gold/80 mb-3">
                     {p.category}
                   </p>
