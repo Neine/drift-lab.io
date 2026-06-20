@@ -37,8 +37,8 @@ export function Blog() {
         <div className="flex items-end justify-between mb-4">
           <div>
             <Reveal>
-              <p className="text-[10px] uppercase tracking-[0.3em] text-gold mb-1">
-                — 02 / Blog
+              <p className="text-xs uppercase tracking-[0.35em] text-gold mb-4">
+                — 01 / Blog
               </p>
             </Reveal>
             <Reveal delay={0.05}>
