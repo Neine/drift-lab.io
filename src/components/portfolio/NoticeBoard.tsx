@@ -87,8 +87,8 @@ export function NoticeBoard() {
           ))}
         </div>
 
+        <div className="mt-auto pt-6 border-t border-border flex items-center gap-3">
           <a
-            href="https://github.com/Neine"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
