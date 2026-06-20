@@ -9,12 +9,6 @@ const credentials = [
   { icon: "🤖", label: "Data Scientist" },
 ];
 
-const navItems = [
-  { id: "blog", label: "01 · Blog" },
-  { id: "showcase", label: "02 · Showcase" },
-  { id: "about", label: "03 · About" },
-  { id: "contact", label: "04 · Contact" },
-];
 
 export function NoticeBoard() {
   return (
