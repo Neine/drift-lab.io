@@ -20,7 +20,7 @@ export function NoticeBoard() {
   return (
     <aside
       id="home"
-      className="lg:fixed lg:top-0 lg:left-0 lg:h-screen lg:w-[22rem] xl:w-[26rem] lg:border-r border-border bg-navy-deep/60 backdrop-blur-md z-30 lg:overflow-y-auto"
+      className="md:fixed md:top-0 md:left-0 md:h-screen md:w-[20rem] lg:w-[22rem] xl:w-[26rem] md:border-r border-border bg-navy-deep/60 backdrop-blur-md z-30 md:overflow-y-auto"
     >
       {/* Subtle grid texture */}
       <div className="absolute inset-0 grid-bg opacity-30 pointer-events-none" />
