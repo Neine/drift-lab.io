@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { Link } from "@tanstack/react-router";
-import { BookOpen, Layers, User } from "lucide-react";
+import { BookOpen, Layers, User, Mail } from "lucide-react";
 
 const ribbonItems = [
   {
@@ -24,17 +24,24 @@ const ribbonItems = [
     description: "VP, Business Transformation & Program Management.",
     icon: User,
   },
+  {
+    id: "contact",
+    label: "Contact",
+    subtitle: "Get in Touch",
+    description: "Open to collaboration, speaking & advisory work.",
+    icon: Mail,
+  },
 ];
 
 export function Ribbon() {
   return (
-    <section className="relative px-6 pt-3 pb-2">
+    <section className="sticky top-0 z-40 bg-navy-deep/80 backdrop-blur-md border-b border-border px-6 pt-3 pb-2">
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center gap-3">
           <span className="hidden md:inline text-[9px] uppercase tracking-[0.4em] text-gold/80 shrink-0">
             Explore —
           </span>
-          <div className="grid grid-cols-3 gap-2 flex-1">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 flex-1">
             {ribbonItems.map((item, i) => {
               const Icon = item.icon;
               return (
