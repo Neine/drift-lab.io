@@ -28,7 +28,7 @@ const ribbonItems = [
 
 export function Ribbon() {
   return (
-    <section className="relative px-6 pt-20 pb-4 md:pt-10 md:pb-3">
+    <section className="relative px-6 pt-3 pb-2">
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center gap-3">
           <span className="hidden md:inline text-[9px] uppercase tracking-[0.4em] text-gold/80 shrink-0">
@@ -40,17 +40,17 @@ export function Ribbon() {
               return (
                 <motion.div
                   key={item.id}
-                  initial={{ opacity: 0, y: 6 }}
+                  initial={{ opacity: 0, y: 4 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.35, delay: i * 0.06 }}
+                  transition={{ duration: 0.25, delay: i * 0.04 }}
                 >
                   <Link
                     to="/"
                     hash={item.id}
-                    className="group flex items-center gap-2.5 bg-card/50 backdrop-blur-sm border border-border rounded-md px-3 py-2 hover:border-gold/50 hover:bg-card/80 transition-all"
+                    className="group flex items-center gap-2 bg-card/50 backdrop-blur-sm border border-border rounded-md px-3 py-1.5 hover:border-gold/50 hover:bg-card/80 transition-all"
                   >
-                    <Icon className="size-4 text-gold shrink-0" />
+                    <Icon className="size-3.5 text-gold shrink-0" />
                     <span className="text-xs font-medium tracking-wide group-hover:text-gold transition-colors truncate">
                       {item.label}
                     </span>
