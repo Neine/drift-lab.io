@@ -22,7 +22,7 @@ export function Contact() {
           </p>
         </Reveal>
         <Reveal delay={0.1}>
-          <h2 className="text-4xl md:text-6xl font-bold mb-4 max-w-3xl leading-tight">
+          <h2 className="text-2xl md:text-3xl font-bold mb-4 max-w-3xl leading-tight">
             Let's Build Something{" "}
             <span className="italic gold-gradient-text">Transformative</span>
           </h2>
