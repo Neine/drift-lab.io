@@ -1,6 +1,5 @@
 import { motion } from "motion/react";
 import { Reveal } from "./Reveal";
-import { Experience } from "./Experience";
 
 const skills = [
   "Program Management",
@@ -25,11 +24,11 @@ const stats = [
 
 export function About() {
   return (
-    <section id="about" className="relative py-32 px-6">
+    <section id="about" className="relative py-24 lg:py-28 px-6">
       <div className="max-w-6xl mx-auto">
         <Reveal>
           <p className="text-xs uppercase tracking-[0.35em] text-gold mb-4">
-            — 05 / About &amp; Experience
+            — 03 / About Neine
           </p>
         </Reveal>
         <Reveal delay={0.1}>
