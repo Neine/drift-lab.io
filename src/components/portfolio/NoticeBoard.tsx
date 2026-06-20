@@ -9,12 +9,6 @@ const credentials = [
   { icon: "🤖", label: "Data Scientist" },
 ];
 
-const navItems = [
-  { id: "blog", label: "01 · Blog" },
-  { id: "showcase", label: "02 · Showcase" },
-  { id: "about", label: "03 · About" },
-  { id: "contact", label: "04 · Contact" },
-];
 
 export function NoticeBoard() {
   return (
@@ -93,26 +87,8 @@ export function NoticeBoard() {
           ))}
         </div>
 
-        {/* Nav links pinned to the board */}
-        <nav className="border-t border-border pt-6 mb-6">
-          <ul className="space-y-2">
-            {navItems.map((n) => (
-              <li key={n.id}>
-                <Link
-                  to="/"
-                  hash={n.id}
-                  className="block text-sm tracking-wide text-foreground/70 hover:text-gold transition-colors"
-                >
-                  {n.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
         <div className="mt-auto pt-6 border-t border-border flex items-center gap-3">
           <a
-            href="https://github.com/Neine"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
