@@ -32,7 +32,7 @@ export function About() {
           </p>
         </Reveal>
         <Reveal delay={0.1}>
-          <h2 className="text-4xl md:text-6xl font-bold leading-tight mb-12 max-w-3xl">
+          <h2 className="text-2xl md:text-3xl font-bold leading-tight mb-12 max-w-3xl">
             Transforming Banking,{" "}
             <span className="italic gold-gradient-text">One Process</span> at a Time
           </h2>
