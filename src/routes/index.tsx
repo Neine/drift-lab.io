@@ -1,12 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Toaster } from "sonner";
-import { Nav } from "@/components/portfolio/Nav";
-import { Hero } from "@/components/portfolio/Hero";
+import { NoticeBoard } from "@/components/portfolio/NoticeBoard";
 import { About } from "@/components/portfolio/About";
-
 import { Contact } from "@/components/portfolio/Contact";
-import { Projects } from "@/components/portfolio/Projects";
-import { Automation } from "@/components/portfolio/Automation";
+import { Showcase } from "@/components/portfolio/Showcase";
 import { Blog } from "@/components/portfolio/Blog";
 
 export const Route = createFileRoute("/")({
@@ -39,16 +36,17 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <main className="bg-background text-foreground">
+    <main className="bg-background text-foreground min-h-screen">
       <Toaster theme="dark" position="bottom-right" />
-      <Nav />
-      <Hero />
-      <Blog />
-      <Automation />
-      <Projects />
-      <About />
-      
-      <Contact />
+      <div className="lg:flex lg:items-start">
+        <NoticeBoard />
+        <div className="flex-1 lg:ml-[22rem] xl:ml-[26rem]">
+          <Blog />
+          <Showcase />
+          <About />
+          <Contact />
+        </div>
+      </div>
     </main>
   );
 }
