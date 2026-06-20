@@ -42,6 +42,7 @@ function Index() {
       <div className="lg:flex lg:items-start">
         <NoticeBoard />
         <div className="flex-1 lg:ml-[22rem] xl:ml-[26rem]">
+          <Ribbon />
           <Blog />
           <Showcase />
           <About />
