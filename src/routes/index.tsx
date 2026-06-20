@@ -5,6 +5,7 @@ import { About } from "@/components/portfolio/About";
 import { Contact } from "@/components/portfolio/Contact";
 import { Showcase } from "@/components/portfolio/Showcase";
 import { Blog } from "@/components/portfolio/Blog";
+import { Ribbon } from "@/components/portfolio/Ribbon";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -41,6 +42,7 @@ function Index() {
       <div className="lg:flex lg:items-start">
         <NoticeBoard />
         <div className="flex-1 lg:ml-[22rem] xl:ml-[26rem]">
+          <Ribbon />
           <Blog />
           <Showcase />
           <About />
