@@ -39,9 +39,9 @@ function Index() {
   return (
     <main className="bg-background text-foreground min-h-screen">
       <Toaster theme="dark" position="bottom-right" />
-      <div className="lg:flex lg:items-start">
+      <div className="md:flex md:items-start">
         <NoticeBoard />
-        <div className="flex-1 lg:ml-[22rem] xl:ml-[26rem]">
+        <div className="flex-1 md:ml-[20rem] lg:ml-[22rem] xl:ml-[26rem]">
           <Ribbon />
           <Blog />
           <Showcase />
