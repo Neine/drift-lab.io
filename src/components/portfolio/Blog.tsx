@@ -28,6 +28,15 @@ const posts = [
     readTime: "3 min read",
     url: "https://www.linkedin.com/feed/update/urn:li:activity:7468688931731976193/",
   },
+  {
+    date: "Jun 2026",
+    category: "Prompt Engineering",
+    title: "Your Prompt Was Vague. The Output Noticed.",
+    excerpt:
+      "Why AI output is only as good as the context you give it — and the five things worth including in every prompt.",
+    readTime: "2 min read",
+    url: "https://medium.com/@neine112arora/your-prompt-was-vague-the-output-noticed-0f72c55092cc",
+  },
 ];
 
 export function Blog() {
