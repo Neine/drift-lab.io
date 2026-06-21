@@ -53,37 +53,39 @@ export function Blog() {
             </p>
           </Reveal>
         </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-          {posts.map((p, i) => (
-            <Reveal key={p.title} delay={i * 0.04}>
-              <a
-                href={p.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group h-full bg-card/60 backdrop-blur-sm border border-border rounded-lg p-4 hover:border-gold/50 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-gold/5 flex flex-col cursor-pointer"
-              >
-                <div className="flex items-center gap-2 mb-2 text-[10px] uppercase tracking-[0.2em]">
-                  <span className="text-gold/80">{p.category}</span>
-                  <span className="text-foreground/30">•</span>
-                  <span className="text-foreground/50">{p.date}</span>
-                </div>
-                <h3 className="font-display text-lg leading-snug mb-2 group-hover:text-gold transition-colors">
-                  {p.title}
-                </h3>
-                <p className="text-sm text-foreground/60 leading-relaxed mb-3 flex-1 line-clamp-2">
-                  {p.excerpt}
-                </p>
-                <div className="border-t border-border pt-2 flex items-center justify-between">
-                  <span className="text-[10px] text-foreground/40">{p.readTime}</span>
-                  <span className="text-[10px] uppercase tracking-[0.15em] text-gold/80 group-hover:text-gold group-hover:translate-x-0.5 transition-all">
-                    Read →
-                  </span>
-                </div>
-              </a>
-            </Reveal>
-          ))}
+        
+       <div className="flex flex-col divide-y divide-border">
+  {posts.map((p, i) => (
+    <Reveal key={p.title} delay={i * 0.04}>
+      
+        href={p.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group flex flex-col md:flex-row md:items-center gap-2 md:gap-6 py-5 hover:bg-card/40 transition-all px-2 -mx-2 rounded-md cursor-pointer"
+      >
+        <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] md:w-40 shrink-0">
+          <span className="text-gold/80">{p.category}</span>
+          <span className="text-foreground/30">•</span>
+          <span className="text-foreground/50">{p.date}</span>
         </div>
+        <div className="flex-1">
+          <h3 className="font-display text-lg leading-snug mb-1 group-hover:text-gold transition-colors">
+            {p.title}
+          </h3>
+          <p className="text-sm text-foreground/60 leading-relaxed line-clamp-3 max-w-2xl">
+            {p.excerpt}
+          </p>
+        </div>
+        <div className="flex items-center gap-3 md:w-32 md:justify-end shrink-0">
+          <span className="text-[10px] text-foreground/40">{p.readTime}</span>
+          <span className="text-[10px] uppercase tracking-[0.15em] text-gold/80 group-hover:text-gold group-hover:translate-x-0.5 transition-all">
+            Read →
+          </span>
+        </div>
+      </a>
+    </Reveal>
+  ))}
+</div>
       </div>
     </section>
   );
