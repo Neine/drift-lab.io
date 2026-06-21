@@ -57,7 +57,7 @@ export function Blog() {
        <div className="flex flex-col divide-y divide-border">
   {posts.map((p, i) => (
     <Reveal key={p.title} delay={i * 0.04}>
-      
+      <a
         href={p.url}
         target="_blank"
         rel="noopener noreferrer"
