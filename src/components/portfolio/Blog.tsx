@@ -52,21 +52,19 @@ export function Blog() {
   return (
     <section id="blog" className="relative px-6 pt-2 pb-8">
       <div className="max-w-6xl mx-auto">
-        <div className="flex items-end justify-between mb-4">
-          <div>
-            <Reveal>
-              <p className="text-xs uppercase tracking-[0.35em] text-gold mb-4">
-                — 01 / Blog
-              </p>
-            </Reveal>
-            <Reveal delay={0.05}>
-              <h2 className="text-2xl md:text-3xl font-bold">
-                Notes & <span className="italic gold-gradient-text">Insights</span>
-              </h2>
-            </Reveal>
-          </div>
+        <div className="mb-4">
+          <Reveal>
+            <p className="text-xs uppercase tracking-[0.35em] text-gold mb-4">
+              — 01 / Blog
+            </p>
+          </Reveal>
+          <Reveal delay={0.05}>
+            <h2 className="text-2xl md:text-3xl font-bold">
+              Notes & <span className="italic gold-gradient-text">Insights</span>
+            </h2>
+          </Reveal>
           <Reveal delay={0.1}>
-            <p className="hidden md:block text-xs text-foreground/50 max-w-xs text-right">
+            <p className="mt-2 text-xs text-foreground/50 max-w-xl">
               Reflections on transformation, AI, and delivering change at scale.
             </p>
           </Reveal>
