@@ -48,7 +48,7 @@ function LeanSigmaPage() {
                   whileHover={{ y: -4 }}
                   className="bg-card/60 backdrop-blur-sm border border-border rounded-lg p-6 hover:border-gold/40 transition-colors"
                 >
-                  <h3 className="font-display text-xl md:text-2xl mb-3">{c.title}</h3>
+                  <h2 className="font-display text-xl md:text-2xl mb-3">{c.title}</h2>
                   <p className="text-foreground/70 text-sm leading-relaxed">{c.desc}</p>
                 </motion.div>
               </Reveal>
