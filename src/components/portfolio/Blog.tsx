@@ -3,6 +3,15 @@ import { Reveal } from "./Reveal";
 const posts = [
   {
     date: "Jun 2026",
+    category: "Spacex Ipo",
+    title: "SpaceX, AI Compute, and the Questions Still Open_Value Maximisation",
+    excerpt:
+      "SpaceX’s IPO Pitch: An AI Infrastructure Bet, Still Unproven SpaceX’s $75 billion IPO last week was the largest public offering on record, surpassing Saudi Aramco’s 2019 listing of $29.4 billion.…",
+    readTime: "2 min read",
+    url: "https://medium.com/@neine112arora/spacex-ai-compute-and-the-questions-still-open-value-maximisation-05fddf4f1733",
+  },
+  {
+    date: "Jun 2026",
     category: "Product & ML",
     title: "The Product Layer Most ML Teams Skip",
     excerpt:
