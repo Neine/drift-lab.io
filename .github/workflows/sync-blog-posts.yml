@@ -1,0 +1,61 @@
+name: Sync Blog Posts
+
+# Fully automated — no manual trigger needed day to day.
+# - Medium: pulled fresh from the public RSS feed every run.
+# - LinkedIn: read from data/linkedin-posts.json. LinkedIn has no public feed
+#   API for personal posts, so add new entries to that file (one JSON object,
+#   ~30 seconds) and this workflow will pick them up on its next run.
+#
+# You can also trigger a run manually any time from the Actions tab
+# (workflow_dispatch), e.g. right after adding a LinkedIn entry.
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"   # every 6 hours
+  workflow_dispatch: {}
+  push:
+    paths:
+      - "data/linkedin-posts.json"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-blog-posts
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run sync script
+        id: sync
+        run: node scripts/sync-posts.mjs
+
+      - name: Check for changes
+        id: diff
+        run: |
+          if git diff --quiet -- src/components/portfolio/Blog.tsx; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit and push
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          git config user.name "drift-lab-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add src/components/portfolio/Blog.tsx
+          git commit -m "chore: sync new blog posts [automated]"
+          git push
