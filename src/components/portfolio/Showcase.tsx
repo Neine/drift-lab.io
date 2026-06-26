@@ -91,18 +91,21 @@ const otherProjects: ProjectItem[] = [
   },
 ];
 
-function ProjectCard({
+function ProjectRow({
   p,
   onImageClick,
 }: {
   p: ProjectItem;
   onImageClick?: () => void;
 }) {
-  const inner = (
-    <article className="group h-full bg-card/60 backdrop-blur-sm border border-border rounded-lg p-6 hover:border-gold/50 transition-all hover:-translate-y-1 hover:shadow-2xl hover:shadow-gold/5 flex flex-col">
+  const rowContent = (
+    <>
+      <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] md:w-44 shrink-0">
+        <span className="text-gold/80">{p.category}</span>
+      </div>
       {p.image && (
         <div
-          className="relative w-full h-40 rounded-md mb-4 border border-border overflow-hidden cursor-zoom-in"
+          className="relative w-full md:w-28 h-20 rounded-md border border-border overflow-hidden cursor-zoom-in shrink-0"
           onClick={(e) => {
             e.preventDefault();
             e.stopPropagation();
@@ -115,42 +118,46 @@ function ProjectCard({
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-            <ZoomIn className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity drop-shadow-lg" />
+            <ZoomIn className="w-4 h-4 text-white opacity-0 group-hover:opacity-100 transition-opacity drop-shadow-lg" />
           </div>
         </div>
       )}
-      <p className="text-xs uppercase tracking-[0.2em] text-gold/80 mb-3">
-        {p.category}
-      </p>
-      <h3 className="font-display text-2xl mb-3 group-hover:text-gold transition-colors">
-        {p.title}
-      </h3>
-      <p className="text-foreground/70 leading-relaxed mb-5 flex-1">
-        {p.desc}
-      </p>
-      <div className="border-t border-border pt-4 mb-4">
-        <p className="text-sm">
+
+      <div className="flex-1">
+        <h3 className="font-display text-lg leading-snug mb-1 group-hover:text-gold transition-colors">
+          {p.title}
+        </h3>
+        <p className="text-sm text-foreground/60 leading-relaxed line-clamp-3 max-w-2xl mb-2">
+          {p.desc}
+        </p>
+        <div className="flex flex-wrap gap-2">
+          {p.tags.map((t) => (
+            <span
+              key={t}
+              className="text-[10px] px-2 py-0.5 rounded-sm bg-gold/10 text-gold border border-gold/20"
+            >
+              {t}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <div className="flex flex-col items-start md:items-end gap-2 md:w-44 shrink-0">
+        <p className="text-xs text-right">
           <span className="text-foreground/50">Impact: </span>
           <span className="text-gold font-medium">{p.impact}</span>
         </p>
-      </div>
-      <div className="flex flex-wrap gap-2">
-        {p.tags.map((t) => (
-          <span
-            key={t}
-            className="text-xs px-3 py-1 rounded-sm bg-gold/10 text-gold border border-gold/20"
-          >
-            {t}
+        {p.href && (
+          <span className="text-[10px] uppercase tracking-[0.15em] text-gold/80 group-hover:text-gold group-hover:translate-x-0.5 transition-all">
+            View on GitHub →
           </span>
-        ))}
+        )}
       </div>
-      {p.href && (
-        <span className="mt-4 text-xs uppercase tracking-[0.2em] text-gold/80 group-hover:text-gold transition-colors">
-          View on GitHub →
-        </span>
-      )}
-    </article>
+    </>
   );
+
+  const rowClasses =
+    "group flex flex-col md:flex-row md:items-center gap-3 md:gap-6 py-5 hover:bg-card/40 transition-all px-2 -mx-2 rounded-md";
 
   if (p.href) {
     return (
@@ -158,13 +165,13 @@ function ProjectCard({
         href={p.href}
         target="_blank"
         rel="noopener noreferrer"
-        className="block h-full"
+        className={`${rowClasses} cursor-pointer`}
       >
-        {inner}
+        {rowContent}
       </a>
     );
   }
-  return inner;
+  return <div className={rowClasses}>{rowContent}</div>;
 }
 
 export function Showcase() {
