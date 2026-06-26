@@ -52,6 +52,9 @@ export function NoticeBoard() {
           className="text-3xl lg:text-4xl font-bold leading-[1.05] mb-2"
         >
           Neine <span className="gold-gradient-text italic">Arora</span>
+          <span className="block text-base lg:text-lg font-normal text-foreground/70 mt-2">
+            Business Transformation &amp; Program Management
+          </span>
         </motion.h1>
 
         <motion.p
