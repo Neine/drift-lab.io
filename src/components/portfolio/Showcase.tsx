@@ -103,25 +103,6 @@ function ProjectRow({
       <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] md:w-44 shrink-0">
         <span className="text-gold/80">{p.category}</span>
       </div>
-      {p.image && (
-        <div
-          className="relative w-full md:w-28 h-20 rounded-md border border-border overflow-hidden cursor-zoom-in shrink-0"
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            onImageClick?.();
-          }}
-        >
-          <img
-            src={p.image}
-            alt={`${p.title} preview`}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-          />
-          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-            <ZoomIn className="w-4 h-4 text-white opacity-0 group-hover:opacity-100 transition-opacity drop-shadow-lg" />
-          </div>
-        </div>
-      )}
 
       <div className="flex-1">
         <h3 className="font-display text-lg leading-snug mb-1 group-hover:text-gold transition-colors">
@@ -153,6 +134,26 @@ function ProjectRow({
           </span>
         )}
       </div>
+
+      {p.image && (
+        <div
+          className="relative w-full md:w-28 h-20 rounded-md border border-border overflow-hidden cursor-zoom-in shrink-0 order-last"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            onImageClick?.();
+          }}
+        >
+          <img
+            src={p.image}
+            alt={`${p.title} preview`}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+            <ZoomIn className="w-4 h-4 text-white opacity-0 group-hover:opacity-100 transition-opacity drop-shadow-lg" />
+          </div>
+        </div>
+      )}
     </>
   );
 
@@ -220,13 +221,13 @@ export function Showcase() {
 
         {/* AI Projects */}
         <Reveal>
-          <h3 className="font-display text-2xl md:text-3xl mb-6">
+          <h3 className="font-display text-2xl md:text-3xl mb-4">
             <span className="text-gold">AI</span> Projects
           </h3>
         </Reveal>
         <div className="flex flex-col divide-y divide-border mb-16">
           {aiProjects.map((p, i) => (
-            <Reveal key={p.title} delay={i * 0.05}>
+            <Reveal key={p.title} delay={i * 0.04}>
               <ProjectRow
                 p={p}
                 onImageClick={() => {
@@ -242,13 +243,13 @@ export function Showcase() {
 
         {/* Other Projects */}
         <Reveal>
-          <h3 className="font-display text-2xl md:text-3xl mb-6">
+          <h3 className="font-display text-2xl md:text-3xl mb-4">
             Other <span className="text-gold">Projects Implemented</span>
           </h3>
         </Reveal>
         <div className="flex flex-col divide-y divide-border">
           {otherProjects.map((p, i) => (
-            <Reveal key={p.title} delay={i * 0.05}>
+            <Reveal key={p.title} delay={i * 0.04}>
               <ProjectRow p={p} />
             </Reveal>
           ))}
