@@ -15,7 +15,11 @@ export const Route = createFileRoute("/rpa")({
     meta: [
       { title: "RPA & Automation — Neine Arora" },
       { name: "description", content: "Neine Arora's RPA and intelligent automation expertise — UiPath, process discovery, IDP, and hyperautomation for banking." },
+      { property: "og:title", content: "RPA & Automation — Neine Arora" },
+      { property: "og:description", content: "UiPath, process discovery, intelligent document processing, and hyperautomation for banking operations." },
+      { property: "og:url", content: "https://drift-lab.io/rpa" },
     ],
+    links: [{ rel: "canonical", href: "https://drift-lab.io/rpa" }],
   }),
   component: RPAPage,
 });
