@@ -224,10 +224,10 @@ export function Showcase() {
             <span className="text-gold">AI</span> Projects
           </h3>
         </Reveal>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
+        <div className="flex flex-col divide-y divide-border mb-16">
           {aiProjects.map((p, i) => (
             <Reveal key={p.title} delay={i * 0.05}>
-              <ProjectCard
+              <ProjectRow
                 p={p}
                 onImageClick={() => {
                   const idx = imageItems.findIndex(
@@ -246,10 +246,10 @@ export function Showcase() {
             Other <span className="text-gold">Projects Implemented</span>
           </h3>
         </Reveal>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="flex flex-col divide-y divide-border">
           {otherProjects.map((p, i) => (
             <Reveal key={p.title} delay={i * 0.05}>
-              <ProjectCard p={p} />
+              <ProjectRow p={p} />
             </Reveal>
           ))}
         </div>
