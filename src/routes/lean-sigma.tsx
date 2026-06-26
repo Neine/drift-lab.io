@@ -15,7 +15,11 @@ export const Route = createFileRoute("/lean-sigma")({
     meta: [
       { title: "Lean Six Sigma — Neine Arora" },
       { name: "description", content: "Neine Arora's Lean Six Sigma Black Belt expertise — DMAIC, process mapping, FMEA, and statistical analysis for banking transformation." },
+      { property: "og:title", content: "Lean Six Sigma — Neine Arora" },
+      { property: "og:description", content: "Black Belt-led DMAIC, process mapping, FMEA, and statistical analysis driving operational excellence in banking." },
+      { property: "og:url", content: "https://drift-lab.io/lean-sigma" },
     ],
+    links: [{ rel: "canonical", href: "https://drift-lab.io/lean-sigma" }],
   }),
   component: LeanSigmaPage,
 });
@@ -48,7 +52,7 @@ function LeanSigmaPage() {
                   whileHover={{ y: -4 }}
                   className="bg-card/60 backdrop-blur-sm border border-border rounded-lg p-6 hover:border-gold/40 transition-colors"
                 >
-                  <h3 className="font-display text-xl md:text-2xl mb-3">{c.title}</h3>
+                  <h2 className="font-display text-xl md:text-2xl mb-3">{c.title}</h2>
                   <p className="text-foreground/70 text-sm leading-relaxed">{c.desc}</p>
                 </motion.div>
               </Reveal>

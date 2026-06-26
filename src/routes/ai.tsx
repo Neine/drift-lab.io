@@ -15,7 +15,11 @@ export const Route = createFileRoute("/ai")({
     meta: [
       { title: "AI & Machine Learning — Neine Arora" },
       { name: "description", content: "Neine Arora's expertise in AI/ML solutions for banking transformation — agentic automation, predictive analytics, NLP, and GenAI integration." },
+      { property: "og:title", content: "AI & Machine Learning — Neine Arora" },
+      { property: "og:description", content: "Agentic automation, predictive analytics, NLP, and GenAI integration for banking transformation." },
+      { property: "og:url", content: "https://drift-lab.io/ai" },
     ],
+    links: [{ rel: "canonical", href: "https://drift-lab.io/ai" }],
   }),
   component: AIPage,
 });
@@ -48,7 +52,7 @@ function AIPage() {
                   whileHover={{ y: -4 }}
                   className="bg-card/60 backdrop-blur-sm border border-border rounded-lg p-6 hover:border-gold/40 transition-colors"
                 >
-                  <h3 className="font-display text-xl md:text-2xl mb-3">{c.title}</h3>
+                  <h2 className="font-display text-xl md:text-2xl mb-3">{c.title}</h2>
                   <p className="text-foreground/70 text-sm leading-relaxed">{c.desc}</p>
                 </motion.div>
               </Reveal>

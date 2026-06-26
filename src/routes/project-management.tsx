@@ -15,7 +15,11 @@ export const Route = createFileRoute("/project-management")({
     meta: [
       { title: "Project Management — Neine Arora" },
       { name: "description", content: "Neine Arora's project and program management expertise — PMP certified, agile delivery, business case development, and global team leadership." },
+      { property: "og:title", content: "Project Management — Neine Arora" },
+      { property: "og:description", content: "PMP®-certified program leadership, agile delivery at scale, business case development, and global team execution." },
+      { property: "og:url", content: "https://drift-lab.io/project-management" },
     ],
+    links: [{ rel: "canonical", href: "https://drift-lab.io/project-management" }],
   }),
   component: PMPage,
 });
@@ -48,7 +52,7 @@ function PMPage() {
                   whileHover={{ y: -4 }}
                   className="bg-card/60 backdrop-blur-sm border border-border rounded-lg p-6 hover:border-gold/40 transition-colors"
                 >
-                  <h3 className="font-display text-xl md:text-2xl mb-3">{c.title}</h3>
+                  <h2 className="font-display text-xl md:text-2xl mb-3">{c.title}</h2>
                   <p className="text-foreground/70 text-sm leading-relaxed">{c.desc}</p>
                 </motion.div>
               </Reveal>
