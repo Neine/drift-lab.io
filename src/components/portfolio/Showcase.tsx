@@ -44,6 +44,22 @@ const aiProjects: ProjectItem[] = [
     tags: ["Python", "Logistic Regression", "Classification"],
     href: "https://github.com/Neine/Telecom_Churn",
   },
+  {
+    title: "Askmycv",
+    category: "Conversational AI",
+    desc: "A personal AI agent that answers career questions on a website visitor's behalf, grounded in the user's CV and LinkedIn profile, with automated lead capture when a visitor shares contact details.",
+    impact: "Automated visitor engagement & lead capture",
+    tags: ["Python", "OpenAI Agents SDK", "RAG", "Gradio"],
+    href: "https://github.com/Neine/Agent_Verse/tree/main/Askmycv",
+  },
+  {
+    title: "SalesAgent",
+    category: "Multi-Agent Systems",
+    desc: "A multi-agent sales workflow where specialized agents draft competing cold emails, a picker agent selects the best one, and the result is handed off to an execution agent for sending.",
+    impact: "Multi-agent orchestration & handoff patterns",
+    tags: ["Python", "OpenAI Agents SDK", "Multi-Agent", "SendGrid"],
+    href: "https://github.com/Neine/Agent_Verse/tree/main/SalesAgent",
+  },
 ];
 
 const otherProjects: ProjectItem[] = [
