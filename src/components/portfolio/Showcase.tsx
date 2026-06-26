@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useMemo } from "react";
 import { Reveal } from "./Reveal";
 import ragAgentImg from "@/assets/RAG_Agent_Snip2.png.asset.json";
 import {
@@ -11,6 +11,7 @@ import { ChevronLeft, ChevronRight, ZoomIn } from "lucide-react";
 interface ProjectItem {
   title: string;
   category: string;
+  date: string;
   desc: string;
   impact: string;
   tags: string[];
@@ -20,8 +21,27 @@ interface ProjectItem {
 
 const aiProjects: ProjectItem[] = [
   {
+    title: "SalesAgent",
+    category: "Multi-Agent Systems",
+    date: "Jun 2026",
+    desc: "A multi-agent sales workflow where specialized agents draft competing cold emails, a picker agent selects the best one, and the result is handed off to an execution agent for sending.",
+    impact: "Multi-agent orchestration & handoff patterns",
+    tags: ["Python", "OpenAI Agents SDK", "Multi-Agent", "SendGrid"],
+    href: "https://github.com/Neine/Agent_Verse/tree/main/SalesAgent",
+  },
+  {
+    title: "Askmycv",
+    category: "Conversational AI",
+    date: "Jun 2026",
+    desc: "A personal AI agent that answers career questions on a website visitor's behalf, grounded in the user's CV and LinkedIn profile, with automated lead capture when a visitor shares contact details.",
+    impact: "Automated visitor engagement & lead capture",
+    tags: ["Python", "OpenAI Agents SDK", "RAG", "Gradio"],
+    href: "https://github.com/Neine/Agent_Verse/tree/main/Askmycv",
+  },
+  {
     title: "RAG-Agent",
     category: "Generative AI",
+    date: "May 2026",
     desc: "Built a Retrieval-Augmented Generation agent that reads policy documents and answers customer queries grounded in the source material, reducing hallucination and improving response accuracy.",
     impact: "Accurate, source-grounded Q&A",
     tags: ["Python", "RAG", "LLM", "Agentic AI"],
@@ -29,36 +49,22 @@ const aiProjects: ProjectItem[] = [
     image: ragAgentImg.url,
   },
   {
-    title: "Bike Sharing Demand",
-    category: "Linear Regression",
-    desc: "Built a multiple linear regression model to predict shared-bike demand for an American provider, identifying the key variables that drive ridership post-pandemic.",
-    impact: "R² ~ 0.83 on test set",
-    tags: ["Python", "Linear Regression", "EDA"],
-    href: "https://github.com/Neine/Bike-Sharing",
-  },
-  {
     title: "Telecom Churn",
     category: "Logistic Regression",
+    date: "Mar 2026",
     desc: "Developed a logistic regression model to predict high-value customer churn for a telecom operator and recommended retention levers from the top predictors.",
     impact: "Reduced churn risk on top decile",
     tags: ["Python", "Logistic Regression", "Classification"],
     href: "https://github.com/Neine/Telecom_Churn",
   },
   {
-    title: "Askmycv",
-    category: "Conversational AI",
-    desc: "A personal AI agent that answers career questions on a website visitor's behalf, grounded in the user's CV and LinkedIn profile, with automated lead capture when a visitor shares contact details.",
-    impact: "Automated visitor engagement & lead capture",
-    tags: ["Python", "OpenAI Agents SDK", "RAG", "Gradio"],
-    href: "https://github.com/Neine/Agent_Verse/tree/main/Askmycv",
-  },
-  {
-    title: "SalesAgent",
-    category: "Multi-Agent Systems",
-    desc: "A multi-agent sales workflow where specialized agents draft competing cold emails, a picker agent selects the best one, and the result is handed off to an execution agent for sending.",
-    impact: "Multi-agent orchestration & handoff patterns",
-    tags: ["Python", "OpenAI Agents SDK", "Multi-Agent", "SendGrid"],
-    href: "https://github.com/Neine/Agent_Verse/tree/main/SalesAgent",
+    title: "Bike Sharing Demand",
+    category: "Linear Regression",
+    date: "Jan 2026",
+    desc: "Built a multiple linear regression model to predict shared-bike demand for an American provider, identifying the key variables that drive ridership post-pandemic.",
+    impact: "R² ~ 0.83 on test set",
+    tags: ["Python", "Linear Regression", "EDA"],
+    href: "https://github.com/Neine/Bike-Sharing",
   },
 ];
 
@@ -66,6 +72,7 @@ const otherProjects: ProjectItem[] = [
   {
     title: "Conversational Analytics",
     category: "Data & Analytics",
+    date: "Apr 2026",
     desc: "Built a real-time cash visibility platform using Google Looker, enabling middle office teams to monitor metrics across global entities. The Data agent grounded in the Looker semantic modeling layer, so it answers governed, trusted natural-language questions rather than freeform SQL guesses.",
     impact: "40% faster reconciliation",
     tags: ["Google Looker", "Data Industrialisation", "Conversational AI"],
@@ -73,39 +80,72 @@ const otherProjects: ProjectItem[] = [
   {
     title: "Agentic Automation for Static Processes",
     category: "AI & Automation",
+    date: "Jan 2026",
     desc: "Architected, designed, and deployed advanced Agentic AI workflows to automate high-volume, repetitive financial operations across multiple Corporate Banking (CB) divisions—targeting SEPA payments, Bank Guarantees, and Collections processes.",
     impact: "60% manual effort reduction",
     tags: ["Agentic AI", "LLM", "Process Automation"],
   },
   {
-    title: "Firm-wide RPA Rollout",
-    category: "Robotic Process Automation",
-    desc: "Led enterprise RPA program at Prudential plc — discovery, governance, and scaled deployment across 30+ processes.",
-    impact: "£2M+ annual savings",
-    tags: ["UiPath", "RPA", "Governance"],
+    title: "Fixed Income Rates Platform Transformation",
+    category: "Platform Transformation",
+    date: "Sep 2025",
+    desc: "Led the end-to-end replacement of a legacy settlement system for the Fixed Income Rates product line. Unified data alignment across the trade lifecycle—from execution through clearing and compliance.",
+    impact: "T+1 → T0 close",
+    tags: ["Data Platform", "Finance", "Simplification"],
   },
   {
     title: "SSI Automated Broadcast Solution",
     category: "Operational Efficiency",
+    date: "Feb 2025",
     desc: "Designed and implemented an automated solution to streamline Standard Settlement Instruction (SSI) management — a single, centralized repository auto-capturing client onboarding data and broadcasting validated SSI downstream to multiple settlement systems.",
     impact: "Strategic Scale",
     tags: ["Agentic AI", "Corporate Banking", "Trade Finance"],
   },
   {
+    title: "Firm-wide RPA Rollout",
+    category: "Robotic Process Automation",
+    date: "Jun 2022",
+    desc: "Led enterprise RPA program at Prudential plc — discovery, governance, and scaled deployment across 30+ processes.",
+    impact: "£2M+ annual savings",
+    tags: ["UiPath", "RPA", "Governance"],
+  },
+  {
     title: "Customer Retention Model",
     category: "Analytics",
+    date: "Mar 2019",
     desc: "Developed predictive retention framework at Groupon using R and Tableau, identifying high-churn cohorts and intervention triggers.",
     impact: "+15% retention lift",
     tags: ["R", "Tableau", "Predictive Modeling"],
   },
-  {
-    title: "Fixed Income Rates Platform Transformation",
-    category: "Platform Transformation",
-    desc: "Led the end-to-end replacement of a legacy settlement system for the Fixed Income Rates product line. Unified data alignment across the trade lifecycle—from execution through clearing and compliance.",
-    impact: "T+1 → T0 close",
-    tags: ["Data Platform", "Finance", "Simplification"],
-  },
 ];
+
+const MONTHS = [
+  "jan", "feb", "mar", "apr", "may", "jun",
+  "jul", "aug", "sep", "oct", "nov", "dec",
+];
+
+// Parses loose "Mon YYYY" strings (e.g. "Jun 2026") into a sortable number,
+// for newest-first ordering. Mirrors the same helper used in Blog.tsx.
+function parseDateKey(dateStr: string): number {
+  const match = dateStr.trim().toLowerCase().match(/([a-z]{3,})\s+(\d{4})/);
+  if (!match) return 0;
+  const monthIdx = MONTHS.indexOf(match[1].slice(0, 3));
+  const year = parseInt(match[2], 10);
+  if (monthIdx === -1 || Number.isNaN(year)) return 0;
+  return year * 12 + monthIdx;
+}
+
+function sortByDateDesc(items: ProjectItem[]): ProjectItem[] {
+  return items
+    .map((p, originalIndex) => ({ ...p, originalIndex }))
+    .sort((a, b) => {
+      const diff = parseDateKey(b.date) - parseDateKey(a.date);
+      if (diff !== 0) return diff;
+      return a.originalIndex - b.originalIndex;
+    });
+}
+
+const VISIBLE_COUNT = 4;
 
 function ProjectRow({
   p,
@@ -118,6 +158,8 @@ function ProjectRow({
     <>
       <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] md:w-44 shrink-0">
         <span className="text-gold/80">{p.category}</span>
+        <span className="text-foreground/30">•</span>
+        <span className="text-foreground/50">{p.date}</span>
       </div>
 
       <div className="flex-1">
@@ -193,7 +235,25 @@ function ProjectRow({
 
 export function Showcase() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const imageItems = aiProjects.filter((p) => p.image);
+  const [showAllAi, setShowAllAi] = useState(false);
+  const [showAllOther, setShowAllOther] = useState(false);
+
+  const sortedAiProjects = useMemo(() => sortByDateDesc(aiProjects), []);
+  const sortedOtherProjects = useMemo(() => sortByDateDesc(otherProjects), []);
+
+  const visibleAiProjects = showAllAi
+    ? sortedAiProjects
+    : sortedAiProjects.slice(0, VISIBLE_COUNT);
+  const visibleOtherProjects = showAllOther
+    ? sortedOtherProjects
+    : sortedOtherProjects.slice(0, VISIBLE_COUNT);
+
+  const hasMoreAi = sortedAiProjects.length > VISIBLE_COUNT;
+  const hasMoreOther = sortedOtherProjects.length > VISIBLE_COUNT;
+
+  // Lightbox only ever needs to cycle through images that are actually
+  // visible on screen right now (respecting the show-more toggle).
+  const imageItems = visibleAiProjects.filter((p) => p.image);
   const currentImageItem = openIndex !== null ? imageItems[openIndex] : null;
 
   const handlePrev = useCallback(() => {
@@ -241,8 +301,8 @@ export function Showcase() {
             <span className="text-gold">AI</span> Projects
           </h3>
         </Reveal>
-        <div className="flex flex-col divide-y divide-border mb-16">
-          {aiProjects.map((p, i) => (
+        <div className="flex flex-col divide-y divide-border">
+          {visibleAiProjects.map((p, i) => (
             <Reveal key={p.title} delay={i * 0.04}>
               <ProjectRow
                 p={p}
@@ -256,6 +316,17 @@ export function Showcase() {
             </Reveal>
           ))}
         </div>
+        {hasMoreAi && (
+          <div className="flex justify-center mt-6 mb-16">
+            <button
+              onClick={() => setShowAllAi((prev) => !prev)}
+              className="text-[10px] uppercase tracking-[0.2em] text-gold/80 hover:text-gold transition-colors border border-border hover:border-gold/40 rounded-full px-5 py-2"
+            >
+              {showAllAi ? "Show less" : `Show all (${sortedAiProjects.length})`}
+            </button>
+          </div>
+        )}
+        {!hasMoreAi && <div className="mb-16" />}
 
         {/* Other Projects */}
         <Reveal>
@@ -264,12 +335,22 @@ export function Showcase() {
           </h3>
         </Reveal>
         <div className="flex flex-col divide-y divide-border">
-          {otherProjects.map((p, i) => (
+          {visibleOtherProjects.map((p, i) => (
             <Reveal key={p.title} delay={i * 0.04}>
               <ProjectRow p={p} />
             </Reveal>
           ))}
         </div>
+        {hasMoreOther && (
+          <div className="flex justify-center mt-6">
+            <button
+              onClick={() => setShowAllOther((prev) => !prev)}
+              className="text-[10px] uppercase tracking-[0.2em] text-gold/80 hover:text-gold transition-colors border border-border hover:border-gold/40 rounded-full px-5 py-2"
+            >
+              {showAllOther ? "Show less" : `Show all (${sortedOtherProjects.length})`}
+            </button>
+          </div>
+        )}
       </div>
 
       <Dialog
