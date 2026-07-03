@@ -60,7 +60,7 @@ export function Projects() {
           </h2>
         </Reveal>
         <Reveal delay={0.15}>
-          <p className="text-foreground/60 mb-16 max-w-2xl">
+          <p className="text-foreground/80 mb-16 max-w-2xl">
             A curated selection of transformation initiatives delivered across banking, insurance and analytics.
           </p>
         </Reveal>
@@ -80,7 +80,7 @@ export function Projects() {
                 </p>
                 <div className="border-t border-border pt-4 mb-4">
                   <p className="text-sm">
-                    <span className="text-foreground/50">Impact: </span>
+                    <span className="text-foreground/75">Impact: </span>
                     <span className="text-gold font-medium">{p.impact}</span>
                   </p>
                 </div>

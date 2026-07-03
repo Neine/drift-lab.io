@@ -56,7 +56,7 @@ export function Experience() {
     <div className="mt-24">
       <div>
         <Reveal>
-          <p className="text-xs uppercase tracking-[0.25em] text-foreground/50 mb-5">
+          <p className="text-xs uppercase tracking-[0.25em] text-foreground/75 mb-5">
             Experience
           </p>
         </Reveal>
@@ -66,7 +66,7 @@ export function Experience() {
           </h3>
         </Reveal>
         <Reveal delay={0.15}>
-          <p className="text-foreground/60 mb-16 max-w-2xl">
+          <p className="text-foreground/80 mb-16 max-w-2xl">
             A timeline of transformation work across global banking, insurance and consulting.
           </p>
         </Reveal>
@@ -96,7 +96,7 @@ export function Experience() {
                     <article className="group bg-card/60 backdrop-blur-sm border border-border rounded-lg p-6 md:p-7 hover:border-gold/50 transition-all hover:-translate-y-1 hover:shadow-2xl hover:shadow-gold/5">
                       <div className="flex flex-wrap items-baseline justify-between gap-2 mb-3">
                         <span className="text-gold text-sm font-medium">{item.org}</span>
-                        <span className="text-xs uppercase tracking-wider text-foreground/50">
+                        <span className="text-xs uppercase tracking-wider text-foreground/75">
                           {item.role} · {item.period}
                         </span>
                       </div>

@@ -149,7 +149,7 @@ export function Hero() {
 
       {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-foreground/40 text-xs tracking-[0.3em] uppercase"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-foreground/70 text-xs tracking-[0.3em] uppercase"
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
       >

@@ -37,19 +37,19 @@ export function Contact() {
           <Reveal delay={0.2} className="md:col-span-3">
             <form onSubmit={onSubmit} className="space-y-5">
               <div>
-                <label className="block text-xs uppercase tracking-[0.25em] text-foreground/50 mb-2">
+                <label className="block text-xs uppercase tracking-[0.25em] text-foreground/75 mb-2">
                   Name
                 </label>
                 <input
                   required
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  className="w-full bg-transparent border-b border-border focus:border-gold outline-none py-3 text-foreground placeholder:text-foreground/30 transition-colors"
+                  className="w-full bg-transparent border-b border-border focus:border-gold outline-none py-3 text-foreground placeholder:text-foreground/80 transition-colors"
                   placeholder="Your full name"
                 />
               </div>
               <div>
-                <label className="block text-xs uppercase tracking-[0.25em] text-foreground/50 mb-2">
+                <label className="block text-xs uppercase tracking-[0.25em] text-foreground/75 mb-2">
                   Email
                 </label>
                 <input
@@ -57,12 +57,12 @@ export function Contact() {
                   type="email"
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  className="w-full bg-transparent border-b border-border focus:border-gold outline-none py-3 text-foreground placeholder:text-foreground/30 transition-colors"
+                  className="w-full bg-transparent border-b border-border focus:border-gold outline-none py-3 text-foreground placeholder:text-foreground/80 transition-colors"
                   placeholder="you@company.com"
                 />
               </div>
               <div>
-                <label className="block text-xs uppercase tracking-[0.25em] text-foreground/50 mb-2">
+                <label className="block text-xs uppercase tracking-[0.25em] text-foreground/75 mb-2">
                   Message
                 </label>
                 <textarea
@@ -70,7 +70,7 @@ export function Contact() {
                   rows={5}
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  className="w-full bg-transparent border-b border-border focus:border-gold outline-none py-3 text-foreground placeholder:text-foreground/30 resize-none transition-colors"
+                  className="w-full bg-transparent border-b border-border focus:border-gold outline-none py-3 text-foreground placeholder:text-foreground/80 resize-none transition-colors"
                   placeholder="Tell me about your project or opportunity…"
                 />
               </div>
@@ -87,7 +87,7 @@ export function Contact() {
           <Reveal delay={0.3} className="md:col-span-2">
             <div className="space-y-6 md:pl-8 md:border-l md:border-border md:h-full">
               <div>
-                <p className="text-xs uppercase tracking-[0.25em] text-foreground/50 mb-2">
+                <p className="text-xs uppercase tracking-[0.25em] text-foreground/75 mb-2">
                   Email
                 </p>
                 <a
@@ -98,7 +98,7 @@ export function Contact() {
                 </a>
               </div>
               <div>
-                <p className="text-xs uppercase tracking-[0.25em] text-foreground/50 mb-2">
+                <p className="text-xs uppercase tracking-[0.25em] text-foreground/75 mb-2">
                   LinkedIn
                 </p>
                 <a
@@ -111,13 +111,13 @@ export function Contact() {
                 </a>
               </div>
               <div>
-                <p className="text-xs uppercase tracking-[0.25em] text-foreground/50 mb-2">
+                <p className="text-xs uppercase tracking-[0.25em] text-foreground/75 mb-2">
                   Location
                 </p>
                 <p className="text-foreground">Bengaluru, India</p>
               </div>
               <div className="pt-6">
-                <p className="text-xs uppercase tracking-[0.25em] text-foreground/50 mb-2">
+                <p className="text-xs uppercase tracking-[0.25em] text-foreground/75 mb-2">
                   Availability
                 </p>
                 <p className="text-sm text-foreground/70 leading-relaxed">
@@ -129,7 +129,7 @@ export function Contact() {
           </Reveal>
         </div>
 
-        <footer className="mt-32 pt-8 border-t border-border flex flex-wrap justify-between items-center gap-4 text-xs text-foreground/40">
+        <footer className="mt-32 pt-8 border-t border-border flex flex-wrap justify-between items-center gap-4 text-xs text-foreground/70">
           <p>© 2026 Neine Arora. All rights reserved.</p>
           <p className="tracking-[0.25em] uppercase">Crafted with intent</p>
         </footer>

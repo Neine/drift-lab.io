@@ -100,7 +100,7 @@ export function Blog() {
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
-            <p className="mt-2 text-xs text-foreground/50 max-w-xl">
+            <p className="mt-2 text-xs text-foreground/75 max-w-xl">
               Reflections on transformation, AI, and delivering change at scale.
             </p>
           </Reveal>
@@ -117,19 +117,19 @@ export function Blog() {
       >
         <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] md:w-40 shrink-0">
           <span className="text-gold/80">{p.category}</span>
-          <span className="text-foreground/30">•</span>
-          <span className="text-foreground/50">{p.date}</span>
+          <span className="text-foreground/80">•</span>
+          <span className="text-foreground/75">{p.date}</span>
         </div>
         <div className="flex-1">
           <h3 className="font-display text-lg leading-snug mb-1 group-hover:text-gold transition-colors">
             {p.title}
           </h3>
-          <p className="text-sm text-foreground/60 leading-relaxed line-clamp-3 max-w-2xl">
+          <p className="text-sm text-foreground/80 leading-relaxed line-clamp-3 max-w-2xl">
             {p.excerpt}
           </p>
         </div>
         <div className="flex items-center gap-3 md:w-32 md:justify-end shrink-0">
-          <span className="text-[10px] text-foreground/40">{p.readTime}</span>
+          <span className="text-[10px] text-foreground/70">{p.readTime}</span>
           <span className="text-[10px] uppercase tracking-[0.15em] text-gold/80 group-hover:text-gold group-hover:translate-x-0.5 transition-all">
             Read →
           </span>
