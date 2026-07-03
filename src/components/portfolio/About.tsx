@@ -54,17 +54,17 @@ export function About() {
             </p>
 
             <div className="mt-10">
-              <p className="text-xs uppercase tracking-[0.25em] text-foreground/50 mb-4">
+              <p className="text-xs uppercase tracking-[0.25em] text-foreground/75 mb-4">
                 Languages
               </p>
               <div className="flex gap-6 text-sm">
                 <div>
                   <span className="text-foreground">English</span>
-                  <span className="text-foreground/50 ml-2">Full Professional</span>
+                  <span className="text-foreground/75 ml-2">Full Professional</span>
                 </div>
                 <div>
                   <span className="text-foreground">Hindi</span>
-                  <span className="text-foreground/50 ml-2">Native</span>
+                  <span className="text-foreground/75 ml-2">Native</span>
                 </div>
               </div>
             </div>
@@ -78,7 +78,7 @@ export function About() {
                   className="border-l-2 border-gold/40 pl-3 py-1"
                 >
                   <div className="font-display text-3xl text-gold">{s.v}</div>
-                  <div className="text-xs text-foreground/60 mt-1">{s.l}</div>
+                  <div className="text-xs text-foreground/80 mt-1">{s.l}</div>
                 </div>
               ))}
             </div>
@@ -86,7 +86,7 @@ export function About() {
         </div>
 
         <Reveal delay={0.4}>
-          <p className="text-xs uppercase tracking-[0.25em] text-foreground/50 mt-16 mb-5">
+          <p className="text-xs uppercase tracking-[0.25em] text-foreground/75 mt-16 mb-5">
             Expertise
           </p>
           <div className="flex flex-wrap gap-2.5">

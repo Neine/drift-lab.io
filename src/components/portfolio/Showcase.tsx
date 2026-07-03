@@ -158,15 +158,15 @@ function ProjectRow({
     <>
       <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] md:w-44 shrink-0">
         <span className="text-gold/80">{p.category}</span>
-        <span className="text-foreground/30">•</span>
-        <span className="text-foreground/50">{p.date}</span>
+        <span className="text-foreground/80">•</span>
+        <span className="text-foreground/75">{p.date}</span>
       </div>
 
       <div className="flex-1">
         <h3 className="font-display text-lg leading-snug mb-1 group-hover:text-gold transition-colors">
           {p.title}
         </h3>
-        <p className="text-sm text-foreground/60 leading-relaxed line-clamp-3 max-w-2xl mb-2">
+        <p className="text-sm text-foreground/80 leading-relaxed line-clamp-3 max-w-2xl mb-2">
           {p.desc}
         </p>
         <div className="flex flex-wrap gap-2">
@@ -183,7 +183,7 @@ function ProjectRow({
 
       <div className="flex flex-col items-start md:items-end gap-2 md:w-44 shrink-0">
         <p className="text-xs text-right">
-          <span className="text-foreground/50">Impact: </span>
+          <span className="text-foreground/75">Impact: </span>
           <span className="text-gold font-medium">{p.impact}</span>
         </p>
         {p.href && (
@@ -289,7 +289,7 @@ export function Showcase() {
           </h2>
         </Reveal>
         <Reveal delay={0.15}>
-          <p className="text-foreground/60 mb-12 max-w-2xl">
+          <p className="text-foreground/80 mb-12 max-w-2xl">
             AI experiments alongside transformation projects delivered across
             banking, insurance and analytics.
           </p>
@@ -399,7 +399,7 @@ export function Showcase() {
                 {currentImageItem.title}
               </p>
               {imageItems.length > 1 && (
-                <p className="text-xs text-foreground/50 mt-1">
+                <p className="text-xs text-foreground/75 mt-1">
                   {openIndex !== null ? openIndex + 1 : 0} / {imageItems.length}
                 </p>
               )}

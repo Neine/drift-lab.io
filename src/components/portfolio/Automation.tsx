@@ -84,7 +84,7 @@ export function Automation() {
           </h2>
         </Reveal>
         <Reveal delay={0.15}>
-          <p className="text-foreground/60 mb-16 max-w-2xl">
+          <p className="text-foreground/80 mb-16 max-w-2xl">
             A dedicated space highlighting automation initiatives and demos.
           </p>
         </Reveal>
@@ -132,7 +132,7 @@ export function Automation() {
                   </p>
                   <div className="border-t border-border pt-4 mb-4">
                     <p className="text-sm">
-                      <span className="text-foreground/50">Impact: </span>
+                      <span className="text-foreground/75">Impact: </span>
                       <span className="text-gold font-medium">{p.impact}</span>
                     </p>
                   </div>
@@ -205,7 +205,7 @@ export function Automation() {
                 {currentImageItem.title}
               </p>
               {imageItems.length > 1 && (
-                <p className="text-xs text-foreground/50 mt-1">
+                <p className="text-xs text-foreground/75 mt-1">
                   {openIndex !== null ? openIndex + 1 : 0} / {imageItems.length}
                 </p>
               )}
