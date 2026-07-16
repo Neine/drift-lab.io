@@ -3,6 +3,15 @@ import { Reveal } from "./Reveal";
 
 const posts = [
   {
+    date: "Jul 2026",
+    category: "Crew Ai",
+    title: "Four AI Agents, One Sandbox, and the Bugs Nobody Demos",
+    excerpt:
+      "Most “AI agents write software” demos skip the messy middle: prompt in, working code out. Building an actual multi-agent engineering team with CrewAI — lead, backend, frontend, test engineer, real…",
+    readTime: "5 min read",
+    url: "https://medium.com/@neine112arora/four-ai-agents-one-sandbox-and-the-bugs-nobody-demos-d002fd691d42",
+  },
+  {
     date: "Jun 2026",
     category: "Spacex Ipo",
     title: "SpaceX, AI Compute, and the Questions Still Open_Value Maximisation",
