@@ -6,6 +6,14 @@ import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 
+declare global {
+  interface Window {
+    __lovableEvents?: {
+      track?: (event: string, properties?: Record<string, unknown>) => string | null;
+    };
+  }
+}
+
 type Props = { postId: string; isAdmin: boolean };
 
 export function BlogEngagement({ postId, isAdmin }: Props) {
@@ -53,6 +61,7 @@ export function BlogEngagement({ postId, isAdmin }: Props) {
       ? await supabase.from('blog_likes').delete().eq('post_id', postId).eq('user_id', userId)
       : await supabase.from('blog_likes').insert({ post_id: postId, user_id: userId });
     if (error) toast.error('Could not update like.');
+    else if (!liked) window.__lovableEvents?.track?.('project.article_liked', { post_id: postId });
     await qc.invalidateQueries({ queryKey: ['blog-likes', postId] });
   }
 
@@ -67,6 +76,7 @@ export function BlogEngagement({ postId, isAdmin }: Props) {
     setBusy(false);
     if (error) return toast.error('Could not post comment.');
     setBody('');
+    window.__lovableEvents?.track?.('project.comment_submitted', { post_id: postId });
     await qc.invalidateQueries({ queryKey: ['blog-comments', postId] });
   }
 
@@ -74,6 +84,7 @@ export function BlogEngagement({ postId, isAdmin }: Props) {
     if (!window.confirm('Delete this comment?')) return;
     const { error } = await supabase.from('blog_comments').delete().eq('id', id);
     if (error) toast.error('Could not delete comment.');
+    else window.__lovableEvents?.track?.('project.comment_deleted', { post_id: postId, by_admin: isAdmin });
     await qc.invalidateQueries({ queryKey: ['blog-comments', postId] });
   }
 
