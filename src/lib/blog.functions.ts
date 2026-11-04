@@ -41,12 +41,20 @@ export const saveBlogPost = createServerFn({ method: 'POST' }).middleware([requi
     return result.data;
   });
 
+export const isEditor = createServerFn({ method: 'POST' }).middleware([requireSupabaseAuth]).handler(async ({ context }) => {
+  const { data: allowed, error } = await context.supabase.rpc('has_role', { _user_id: context.userId, _role: 'admin' });
+  if (error) throw new Error(error.message);
+  return allowed;
+});
+
 export const deleteBlogPost = createServerFn({ method: 'POST' }).middleware([requireSupabaseAuth])
-  .inputValidator((input: unknown) => z.object({ id: z.string().uuid() }).parse(input))
+  .inputValidator((input: unknown) => z.object({ id: z.string().uuid().optional(), slug: z.string().max(180).optional() }).parse(input))
   .handler(async ({ data, context }) => {
     const { data: allowed } = await context.supabase.rpc('has_role', { _user_id: context.userId, _role: 'admin' });
     if (!allowed) throw new Error('Publishing is restricted to the website owner.');
-    const { error } = await context.supabase.from('blog_posts').delete().eq('id', data.id);
+    if (!data.id && !data.slug) throw new Error('Provide an article id or URL to delete.');
+    const query = context.supabase.from('blog_posts').delete();
+    const { error } = data.id ? await query.eq('id', data.id) : await query.eq('slug', data.slug ?? '');
     if (error) throw new Error(error.message);
     return { success: true };
   });
