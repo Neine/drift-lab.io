@@ -20,14 +20,6 @@ interface ProjectItem {
 
 const items: ProjectItem[] = [
   {
-    title: "AgentVerse — DeepResearch",
-    category: "Agentic AI",
-    desc: "A research agent built on the OpenAI Agents SDK that plans web searches, runs them in parallel with asyncio.gather, writes a long-form structured report from the findings, and emails it — with structured outputs, a hosted web-search tool and end-to-end tracing.",
-    impact: "Plan → Search → Write → Email pipeline",
-    tags: ["Python", "OpenAI Agents SDK", "Parallel Execution", "Structured Outputs"],
-    href: "https://github.com/Neine/AgentVerse",
-  },
-  {
     title: "RAG-Agent",
     category: "Generative AI",
     desc: "Built a Retrieval-Augmented Generation agent that reads policy documents and answers customer queries grounded in the source material, reducing hallucination and improving response accuracy.",
