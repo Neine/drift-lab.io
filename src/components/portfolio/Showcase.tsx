@@ -30,6 +30,15 @@ const aiProjects: ProjectItem[] = [
     href: "https://github.com/Neine/Agent_Verse/tree/main/SalesAgent",
   },
   {
+    title: "DeepResearch",
+    category: "Agentic AI",
+    date: "Oct 2026",
+    desc: "A research agent built on the OpenAI Agents SDK that plans web searches, runs them in parallel with asyncio.gather, writes a long-form structured report from the findings, and emails it — with structured outputs, a hosted web-search tool and end-to-end tracing.",
+    impact: "Plan → Search → Write → Email pipeline",
+    tags: ["Python", "OpenAI Agents SDK", "Parallel Execution", "Structured Outputs"],
+    href: "https://github.com/Neine/Agent_Verse/tree/main/DeepResearch",
+  },
+  {
     title: "Askmycv",
     category: "Conversational AI",
     date: "Jun 2026",
