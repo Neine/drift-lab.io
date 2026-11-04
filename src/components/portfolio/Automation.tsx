@@ -20,11 +20,11 @@ interface ProjectItem {
 
 const items: ProjectItem[] = [
   {
-    title: "AgentVerse — SalesAgent",
+    title: "AgentVerse — DeepResearch",
     category: "Agentic AI",
-    desc: "An automated SDR workflow built on the OpenAI Agents SDK: three writer agents with different tones draft cold emails in parallel, a picker agent selects the best draft, and a manager agent handoffs to an email writer, HTML converter and SendGrid sender — every run fully traced.",
-    impact: "Multi-agent email outreach pipeline",
-    tags: ["Python", "OpenAI Agents SDK", "Multi-Agent Orchestration", "Handoffs"],
+    desc: "A research agent built on the OpenAI Agents SDK that plans web searches, runs them in parallel with asyncio.gather, writes a long-form structured report from the findings, and emails it — with structured outputs, a hosted web-search tool and end-to-end tracing.",
+    impact: "Plan → Search → Write → Email pipeline",
+    tags: ["Python", "OpenAI Agents SDK", "Parallel Execution", "Structured Outputs"],
     href: "https://github.com/Neine/AgentVerse",
   },
   {
