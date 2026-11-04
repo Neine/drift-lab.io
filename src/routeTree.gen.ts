@@ -9,12 +9,18 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as RpaRouteImport } from './routes/rpa'
 import { Route as ProjectManagementRouteImport } from './routes/project-management'
 import { Route as LeanSigmaRouteImport } from './routes/lean-sigma'
 import { Route as AiRouteImport } from './routes/ai'
 import { Route as IndexRouteImport } from './routes/index'
 
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RpaRoute = RpaRouteImport.update({
   id: '/rpa',
   path: '/rpa',
@@ -47,6 +53,7 @@ export interface FileRoutesByFullPath {
   '/lean-sigma': typeof LeanSigmaRoute
   '/project-management': typeof ProjectManagementRoute
   '/rpa': typeof RpaRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -54,6 +61,7 @@ export interface FileRoutesByTo {
   '/lean-sigma': typeof LeanSigmaRoute
   '/project-management': typeof ProjectManagementRoute
   '/rpa': typeof RpaRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -62,13 +70,33 @@ export interface FileRoutesById {
   '/lean-sigma': typeof LeanSigmaRoute
   '/project-management': typeof ProjectManagementRoute
   '/rpa': typeof RpaRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/ai' | '/lean-sigma' | '/project-management' | '/rpa'
+  fullPaths:
+    | '/'
+    | '/ai'
+    | '/lean-sigma'
+    | '/project-management'
+    | '/rpa'
+    | '/sitemap.xml'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/ai' | '/lean-sigma' | '/project-management' | '/rpa'
-  id: '__root__' | '/' | '/ai' | '/lean-sigma' | '/project-management' | '/rpa'
+  to:
+    | '/'
+    | '/ai'
+    | '/lean-sigma'
+    | '/project-management'
+    | '/rpa'
+    | '/sitemap.xml'
+  id:
+    | '__root__'
+    | '/'
+    | '/ai'
+    | '/lean-sigma'
+    | '/project-management'
+    | '/rpa'
+    | '/sitemap.xml'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -77,10 +105,18 @@ export interface RootRouteChildren {
   LeanSigmaRoute: typeof LeanSigmaRoute
   ProjectManagementRoute: typeof ProjectManagementRoute
   RpaRoute: typeof RpaRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/rpa': {
       id: '/rpa'
       path: '/rpa'
@@ -125,6 +161,7 @@ const rootRouteChildren: RootRouteChildren = {
   LeanSigmaRoute: LeanSigmaRoute,
   ProjectManagementRoute: ProjectManagementRoute,
   RpaRoute: RpaRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

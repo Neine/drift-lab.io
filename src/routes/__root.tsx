@@ -72,6 +72,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: "google-site-verification", content: "anMtfH016qnmXW1KIZ3vO-hjx-ivBEHCmtGonq4RAeQ" },
       { title: "Neine Arora — Business Transformation Portfolio" },
       { name: "description", content: "Neine Arora's portfolio — VP at Deutsche Bank driving banking transformation with Lean Six Sigma, PMP, RPA, and AI/ML." },
       { name: "author", content: "Neine Arora" },
