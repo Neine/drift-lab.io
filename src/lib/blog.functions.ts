@@ -54,7 +54,7 @@ export const deleteBlogPost = createServerFn({ method: 'POST' }).middleware([req
     if (!allowed) throw new Error('Publishing is restricted to the website owner.');
     if (!data.id && !data.slug) throw new Error('Provide an article id or URL to delete.');
     const query = context.supabase.from('blog_posts').delete();
-    const { error } = data.id ? await query.eq('id', data.id) : await query.eq('slug', data.slug);
+    const { error } = data.id ? await query.eq('id', data.id) : await query.eq('slug', data.slug ?? '');
     if (error) throw new Error(error.message);
     return { success: true };
   });
