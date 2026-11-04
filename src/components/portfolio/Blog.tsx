@@ -4,8 +4,8 @@ import { Reveal } from "./Reveal";
 const posts = [
   {
     date: "Nov 2026",
-    category: "LinkedIn Post",
-    title: "Latest from LinkedIn",
+    category: "Process Mining",
+    title: "Process Mining",
     excerpt: "",
     readTime: "",
     url: "https://www.linkedin.com/feed/update/urn:li:activity:7521596087347118080/",
