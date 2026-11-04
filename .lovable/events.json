@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "events": {
+    "project.article_liked": {
+      "event_schema_version": 1,
+      "description": "A signed-in reader liked a blog article.",
+      "privacy": {
+        "contains_pii": false,
+        "purpose": "product_analytics"
+      },
+      "properties_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "post_id"
+        ],
+        "properties": {
+          "post_id": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "project.article_viewed": {
+      "event_schema_version": 1,
+      "description": "A visitor opened a published blog article.",
+      "privacy": {
+        "contains_pii": false,
+        "purpose": "product_analytics"
+      },
+      "properties_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "slug"
+        ],
+        "properties": {
+          "slug": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "project.comment_deleted": {
+      "event_schema_version": 1,
+      "description": "A comment on a blog article was deleted by its author or the site owner.",
+      "privacy": {
+        "contains_pii": false,
+        "purpose": "product_analytics"
+      },
+      "properties_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "post_id",
+          "by_admin"
+        ],
+        "properties": {
+          "post_id": {
+            "type": "string"
+          },
+          "by_admin": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "project.comment_submitted": {
+      "event_schema_version": 1,
+      "description": "A reader posted a comment on a blog article.",
+      "privacy": {
+        "contains_pii": false,
+        "purpose": "product_analytics"
+      },
+      "properties_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "post_id"
+        ],
+        "properties": {
+          "post_id": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
