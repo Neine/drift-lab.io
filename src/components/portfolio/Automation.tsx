@@ -20,6 +20,14 @@ interface ProjectItem {
 
 const items: ProjectItem[] = [
   {
+    title: "AgentVerse",
+    category: "Agentic AI",
+    desc: "A collection of hands-on Jupyter notebooks built on the OpenAI Agents SDK, walking through the core agent patterns behind real-world use cases: multi-agent orchestration, handoffs, parallel execution, agents-as-tools and tracing.",
+    impact: "3 runnable agentic systems",
+    tags: ["Python", "OpenAI Agents SDK", "Multi-Agent Orchestration"],
+    href: "https://github.com/Neine/AgentVerse",
+  },
+  {
     title: "RAG-Agent",
     category: "Generative AI",
     desc: "Built a Retrieval-Augmented Generation agent that reads policy documents and answers customer queries grounded in the source material, reducing hallucination and improving response accuracy.",
