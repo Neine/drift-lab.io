@@ -9,31 +9,16 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as RpaRouteImport } from './routes/rpa'
-import { Route as ProjectManagementRouteImport } from './routes/project-management'
-import { Route as LeanSigmaRouteImport } from './routes/lean-sigma'
-import { Route as AiRouteImport } from './routes/ai'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AiRouteImport } from './routes/ai'
+import { Route as LeanSigmaRouteImport } from './routes/lean-sigma'
+import { Route as ProjectManagementRouteImport } from './routes/project-management'
+import { Route as RpaRouteImport } from './routes/rpa'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const RpaRoute = RpaRouteImport.update({
-  id: '/rpa',
-  path: '/rpa',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProjectManagementRoute = ProjectManagementRouteImport.update({
-  id: '/project-management',
-  path: '/project-management',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LeanSigmaRoute = LeanSigmaRouteImport.update({
-  id: '/lean-sigma',
-  path: '/lean-sigma',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AiRoute = AiRouteImport.update({
@@ -41,9 +26,24 @@ const AiRoute = AiRouteImport.update({
   path: '/ai',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const LeanSigmaRoute = LeanSigmaRouteImport.update({
+  id: '/lean-sigma',
+  path: '/lean-sigma',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectManagementRoute = ProjectManagementRouteImport.update({
+  id: '/project-management',
+  path: '/project-management',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RpaRoute = RpaRouteImport.update({
+  id: '/rpa',
+  path: '/rpa',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -110,32 +110,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/rpa': {
-      id: '/rpa'
-      path: '/rpa'
-      fullPath: '/rpa'
-      preLoaderRoute: typeof RpaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/project-management': {
-      id: '/project-management'
-      path: '/project-management'
-      fullPath: '/project-management'
-      preLoaderRoute: typeof ProjectManagementRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/lean-sigma': {
-      id: '/lean-sigma'
-      path: '/lean-sigma'
-      fullPath: '/lean-sigma'
-      preLoaderRoute: typeof LeanSigmaRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ai': {
@@ -145,11 +124,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AiRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/lean-sigma': {
+      id: '/lean-sigma'
+      path: '/lean-sigma'
+      fullPath: '/lean-sigma'
+      preLoaderRoute: typeof LeanSigmaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/project-management': {
+      id: '/project-management'
+      path: '/project-management'
+      fullPath: '/project-management'
+      preLoaderRoute: typeof ProjectManagementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rpa': {
+      id: '/rpa'
+      path: '/rpa'
+      fullPath: '/rpa'
+      preLoaderRoute: typeof RpaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
