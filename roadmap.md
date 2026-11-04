@@ -4,5 +4,5 @@
 - [x] Include published articles in Notes & Insights and dedicated reading pages.
 - [x] Verify publishing end to end — saved draft, confirmed public privacy, published to Notes & Insights, read article as visitor, unpublished and deleted temporary test article; mobile checked.
 - [x] Enable Neine's editor account — granted admin to her verified requesting-user account.
-- [ ] Add private image/GIF/infographic uploads and article rendering.
-- [ ] Verify uploads, draft privacy and published media on desktop/mobile.
+- [x] Add private image/GIF/infographic uploads and article rendering.
+- [x] Verify uploads, draft privacy and published media on desktop/mobile — PNG and animated GIF rendered with captions; draft access denied; temporary article and files removed.
