@@ -29,6 +29,7 @@ function ArticlePage() {
   const navigate = useNavigate();
   const [signedIn, setSignedIn] = useState(false);
   const [deleting, setDeleting] = useState(false);
+  useEffect(() => { if (post) window.__lovableEvents?.track?.('project.article_viewed', { slug: post.slug }); }, [post?.slug]);
   useEffect(() => { supabase.auth.getSession().then(({ data }) => setSignedIn(Boolean(data.session))); }, []);
   const { data: editor } = useQuery({ queryKey: ['is-editor'], queryFn: () => isEditor(), enabled: signedIn, staleTime: 60_000 });
 
