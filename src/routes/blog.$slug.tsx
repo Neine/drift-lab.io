@@ -53,7 +53,7 @@ function ArticlePage() {
     {post.excerpt && <p className="text-lg leading-relaxed text-foreground mb-10 border-b border-border pb-8">{post.excerpt}</p>}
     <ArticleBody content={post.content} />
     {editor && <div className="flex flex-wrap gap-3 items-center mt-12 border-t border-border pt-6">
-      <Button asChild variant="outline" size="sm"><Pencil />Edit post</Button>
+      <Button asChild variant="outline" size="sm"><span className="inline-flex items-center gap-2"><Pencil />Edit post</span></Button>
       <Button variant="outline" size="sm" disabled={deleting} onClick={remove}><Trash2 />{deleting ? 'Deleting…' : 'Delete post'}</Button>
     </div>}
   </article></main>;
