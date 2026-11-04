@@ -20,11 +20,11 @@ interface ProjectItem {
 
 const items: ProjectItem[] = [
   {
-    title: "AgentVerse",
+    title: "AgentVerse — SalesAgent",
     category: "Agentic AI",
-    desc: "A collection of hands-on Jupyter notebooks built on the OpenAI Agents SDK, walking through the core agent patterns behind real-world use cases: multi-agent orchestration, handoffs, parallel execution, agents-as-tools and tracing.",
-    impact: "3 runnable agentic systems",
-    tags: ["Python", "OpenAI Agents SDK", "Multi-Agent Orchestration"],
+    desc: "An automated SDR workflow built on the OpenAI Agents SDK: three writer agents with different tones draft cold emails in parallel, a picker agent selects the best draft, and a manager agent handoffs to an email writer, HTML converter and SendGrid sender — every run fully traced.",
+    impact: "Multi-agent email outreach pipeline",
+    tags: ["Python", "OpenAI Agents SDK", "Multi-Agent Orchestration", "Handoffs"],
     href: "https://github.com/Neine/AgentVerse",
   },
   {
