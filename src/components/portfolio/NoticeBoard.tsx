@@ -39,6 +39,9 @@ export function NoticeBoard() {
         <motion.img
           src={neineAsset.url}
           alt="Neine Arora"
+          width={112}
+          height={112}
+          fetchPriority="high"
           initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.1 }}
