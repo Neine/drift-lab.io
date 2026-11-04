@@ -6,6 +6,7 @@ import { Contact } from "@/components/portfolio/Contact";
 import { Showcase } from "@/components/portfolio/Showcase";
 import { Blog } from "@/components/portfolio/Blog";
 import { Ribbon } from "@/components/portfolio/Ribbon";
+import neineAsset from "@/assets/neine.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
