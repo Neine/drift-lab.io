@@ -3,6 +3,14 @@ import { Reveal } from "./Reveal";
 
 const posts = [
   {
+    date: "Nov 2026",
+    category: "Machine Learning",
+    title: "The Model Is the Easy Part: 8 Hidden Choices Behind Every Winning…",
+    excerpt: "",
+    readTime: "",
+    url: "https://www.linkedin.com/pulse/model-easy-part-8-hidden-choices-behind-every-winning-neine-arora-quhnc/",
+  },
+  {
     date: "Jul 2026",
     category: "Crew Ai",
     title: "Four AI Agents, One Sandbox, and the Bugs Nobody Demos",
