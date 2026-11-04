@@ -2,5 +2,5 @@
 - [x] Check whether the Process Mining LinkedIn link opens or is blocked.
 - [x] Add private blog writing, drafts and publishing.
 - [x] Include published articles in Notes & Insights and dedicated reading pages.
-- [ ] Verify publishing end to end — blocked until Neine signs in and receives editor access; validation tests, public pages and signed-out gate passed.
-- [ ] Enable Neine's editor account — blocked until she signs in; no owner account exists yet.
+- [x] Verify publishing end to end — saved draft, confirmed public privacy, published to Notes & Insights, read article as visitor, unpublished and deleted temporary test article; mobile checked.
+- [x] Enable Neine's editor account — granted admin to her verified requesting-user account.
