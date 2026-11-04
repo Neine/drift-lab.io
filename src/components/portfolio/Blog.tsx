@@ -4,6 +4,14 @@ import { Reveal } from "./Reveal";
 const posts = [
   {
     date: "Nov 2026",
+    category: "LinkedIn Post",
+    title: "Latest from LinkedIn",
+    excerpt: "",
+    readTime: "",
+    url: "https://www.linkedin.com/feed/update/urn:li:activity:7521596087347118080/",
+  },
+  {
+    date: "Nov 2026",
     category: "Machine Learning",
     title: "The Model Is the Easy Part: 8 Hidden Choices Behind Every Winning…",
     excerpt: "",
