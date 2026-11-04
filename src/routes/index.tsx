@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Toaster } from "sonner";
+import { publishedPostsOptions } from '@/lib/blog.queries';
 import { NoticeBoard } from "@/components/portfolio/NoticeBoard";
 import { About } from "@/components/portfolio/About";
 import { Contact } from "@/components/portfolio/Contact";
@@ -9,6 +9,7 @@ import { Ribbon } from "@/components/portfolio/Ribbon";
 import neineAsset from "@/assets/neine.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
+  loader: ({ context }) => context.queryClient.ensureQueryData(publishedPostsOptions),
   head: () => ({
     meta: [
       { title: "Neine Arora — VP, Business Transformation & Program Management" },
@@ -24,6 +25,8 @@ export const Route = createFileRoute("/")({
           "Solving critical banking challenges through technology, innovation, and 13+ years of transformation expertise.",
       },
       { property: "og:url", content: "https://drift-lab.io/" },
+      { property: 'og:type', content: 'website' },
+      { name: 'twitter:card', content: 'summary' },
     ],
     links: [
       { rel: "canonical", href: "https://drift-lab.io/" },
@@ -59,7 +62,6 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <main className="bg-background text-foreground min-h-screen">
-      <Toaster theme="dark" position="bottom-right" />
       <div className="md:flex md:items-start">
         <NoticeBoard />
         <div className="flex-1 md:ml-[20rem] lg:ml-[22rem] xl:ml-[26rem]">

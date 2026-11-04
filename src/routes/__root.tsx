@@ -9,6 +9,9 @@ import {
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import { useEffect } from 'react';
+import { supabase } from '@/integrations/supabase/client';
+import { Toaster } from 'sonner';
 
 function NotFoundComponent() {
   return (
@@ -92,6 +95,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:description", content: "Portfolio of Neine Arora, VP at Deutsche Bank — banking transformation through Lean Six Sigma, RPA, and AI/ML." },
     ],
     links: [
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,800;1,500;1,700&family=DM+Sans:wght@300;400;500;600&display=swap' },
       {
         rel: "stylesheet",
         href: appCss,
@@ -131,10 +135,20 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const router = useRouter();
+  useEffect(() => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(event => {
+      if (event !== 'SIGNED_IN' && event !== 'SIGNED_OUT' && event !== 'USER_UPDATED') return;
+      void router.invalidate();
+      if (event !== 'SIGNED_OUT') void queryClient.invalidateQueries();
+    });
+    return () => subscription.unsubscribe();
+  }, [router, queryClient]);
 
   return (
     <QueryClientProvider client={queryClient}>
       <Outlet />
+      <Toaster theme="dark" position="bottom-right" />
     </QueryClientProvider>
   );
 }

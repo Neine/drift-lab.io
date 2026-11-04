@@ -10,20 +10,33 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AiRouteImport } from './routes/ai'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as LeanSigmaRouteImport } from './routes/lean-sigma'
 import { Route as ProjectManagementRouteImport } from './routes/project-management'
 import { Route as RpaRouteImport } from './routes/rpa'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as AuthenticatedBlogEditorRouteImport } from './routes/_authenticated/blog-editor'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AiRoute = AiRouteImport.update({
   id: '/ai',
   path: '/ai',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LeanSigmaRoute = LeanSigmaRouteImport.update({
@@ -46,66 +59,99 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedBlogEditorRoute = AuthenticatedBlogEditorRouteImport.update({
+  id: '/blog-editor',
+  path: '/blog-editor',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/ai': typeof AiRoute
+  '/auth': typeof AuthRoute
   '/lean-sigma': typeof LeanSigmaRoute
   '/project-management': typeof ProjectManagementRoute
   '/rpa': typeof RpaRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/blog-editor': typeof AuthenticatedBlogEditorRoute
+  '/blog/$slug': typeof BlogSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/ai': typeof AiRoute
+  '/auth': typeof AuthRoute
   '/lean-sigma': typeof LeanSigmaRoute
   '/project-management': typeof ProjectManagementRoute
   '/rpa': typeof RpaRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/blog-editor': typeof AuthenticatedBlogEditorRoute
+  '/blog/$slug': typeof BlogSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/ai': typeof AiRoute
+  '/auth': typeof AuthRoute
   '/lean-sigma': typeof LeanSigmaRoute
   '/project-management': typeof ProjectManagementRoute
   '/rpa': typeof RpaRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/_authenticated/blog-editor': typeof AuthenticatedBlogEditorRoute
+  '/blog/$slug': typeof BlogSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/ai'
+    | '/auth'
     | '/lean-sigma'
     | '/project-management'
     | '/rpa'
     | '/sitemap.xml'
+    | '/blog-editor'
+    | '/blog/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/ai'
+    | '/auth'
     | '/lean-sigma'
     | '/project-management'
     | '/rpa'
     | '/sitemap.xml'
+    | '/blog-editor'
+    | '/blog/$slug'
   id:
     | '__root__'
     | '/'
+    | '/_authenticated'
     | '/ai'
+    | '/auth'
     | '/lean-sigma'
     | '/project-management'
     | '/rpa'
     | '/sitemap.xml'
+    | '/_authenticated/blog-editor'
+    | '/blog/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AiRoute: typeof AiRoute
+  AuthRoute: typeof AuthRoute
   LeanSigmaRoute: typeof LeanSigmaRoute
   ProjectManagementRoute: typeof ProjectManagementRoute
   RpaRoute: typeof RpaRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  BlogSlugRoute: typeof BlogSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -117,11 +163,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/ai': {
       id: '/ai'
       path: '/ai'
       fullPath: '/ai'
       preLoaderRoute: typeof AiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lean-sigma': {
@@ -152,16 +212,44 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/blog-editor': {
+      id: '/_authenticated/blog-editor'
+      path: '/blog-editor'
+      fullPath: '/blog-editor'
+      preLoaderRoute: typeof AuthenticatedBlogEditorRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedBlogEditorRoute: typeof AuthenticatedBlogEditorRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedBlogEditorRoute: AuthenticatedBlogEditorRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AiRoute: AiRoute,
+  AuthRoute: AuthRoute,
   LeanSigmaRoute: LeanSigmaRoute,
   ProjectManagementRoute: ProjectManagementRoute,
   RpaRoute: RpaRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  BlogSlugRoute: BlogSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

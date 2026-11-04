@@ -18,6 +18,8 @@ export const Route = createFileRoute("/lean-sigma")({
       { property: "og:title", content: "Lean Six Sigma — Neine Arora" },
       { property: "og:description", content: "Black Belt-led DMAIC, process mapping, FMEA, and statistical analysis driving operational excellence in banking." },
       { property: "og:url", content: "https://drift-lab.io/lean-sigma" },
+      { property: 'og:type', content: 'website' },
+      { name: 'twitter:card', content: 'summary' },
     ],
     links: [{ rel: "canonical", href: "https://drift-lab.io/lean-sigma" }],
   }),
