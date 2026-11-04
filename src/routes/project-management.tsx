@@ -18,6 +18,8 @@ export const Route = createFileRoute("/project-management")({
       { property: "og:title", content: "Project Management — Neine Arora" },
       { property: "og:description", content: "PMP®-certified program leadership, agile delivery at scale, business case development, and global team execution." },
       { property: "og:url", content: "https://drift-lab.io/project-management" },
+      { property: 'og:type', content: 'website' },
+      { name: 'twitter:card', content: 'summary' },
     ],
     links: [{ rel: "canonical", href: "https://drift-lab.io/project-management" }],
   }),

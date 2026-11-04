@@ -1,5 +1,11 @@
 import { useState, useMemo } from "react";
 import { Reveal } from "./Reveal";
+import { Link } from '@tanstack/react-router';
+import { useSuspenseQuery } from '@tanstack/react-query';
+import { publishedPostsOptions } from '@/lib/blog.queries';
+import { readingTime } from '@/lib/blog';
+import { Button } from '@/components/ui/button';
+import { PenLine } from 'lucide-react';
 
 const posts = [
   {
@@ -88,16 +94,22 @@ const VISIBLE_COUNT = 4;
 
 export function Blog() {
   const [showAll, setShowAll] = useState(false);
+  const { data: authoredPosts } = useSuspenseQuery(publishedPostsOptions);
 
   const sortedPosts = useMemo(() => {
-    return posts
+    const authored = authoredPosts.map(p => ({
+      title: p.title, excerpt: p.excerpt, category: p.category,
+      date: p.published_at ? new Date(p.published_at).toLocaleDateString('en-GB', { month: 'short', year: 'numeric', timeZone: 'UTC' }) : '',
+      readTime: readingTime(p.content), url: `/blog/${p.slug}`, slug: p.slug,
+    }));
+    return [...authored, ...posts.map(p => ({ ...p, slug: '' }))]
       .map((p, originalIndex) => ({ ...p, originalIndex }))
       .sort((a, b) => {
         const diff = parseDateKey(b.date) - parseDateKey(a.date);
         if (diff !== 0) return diff;
         return a.originalIndex - b.originalIndex; // stable: newest-prepended wins ties
       });
-  }, []);
+  }, [authoredPosts]);
 
   const visiblePosts = showAll ? sortedPosts : sortedPosts.slice(0, VISIBLE_COUNT);
   const hasMore = sortedPosts.length > VISIBLE_COUNT;
@@ -106,6 +118,7 @@ export function Blog() {
     <section id="blog" className="relative px-6 pt-2 pb-8">
       <div className="max-w-6xl mx-auto">
         <div className="mb-4">
+          <div className="flex justify-end"><Button asChild variant="ghost" size="sm" className="text-muted-foreground"><Link to="/blog-editor"><PenLine />Write a post</Link></Button></div>
           <Reveal>
             <p className="text-xs uppercase tracking-[0.35em] text-gold mb-4">
               — 01 / Blog
@@ -126,7 +139,12 @@ export function Blog() {
        <div className="flex flex-col divide-y divide-border">
   {visiblePosts.map((p, i) => (
     <Reveal key={p.title} delay={i * 0.04}>
-      <a
+      <Button asChild variant="ghost" className="h-auto w-full whitespace-normal p-0 hover:bg-transparent">
+      {p.slug ? <Link to="/blog/$slug" params={{ slug: p.slug }} className="group flex w-full flex-col md:flex-row md:items-center gap-2 md:gap-6 py-5 hover:bg-card/40 transition-all px-2 -mx-2 rounded-md cursor-pointer text-left">
+        <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] md:w-40 shrink-0"><span className="text-gold-soft">{p.category}</span><span className="text-foreground/75">{p.date}</span></div>
+        <div className="flex-1 min-w-0"><h3 className="font-display text-lg leading-snug mb-1 group-hover:text-gold transition-colors">{p.title}</h3><p className="text-sm text-foreground/80 leading-relaxed line-clamp-3 max-w-2xl">{p.excerpt}</p></div>
+        <div className="flex items-center gap-3 md:w-32 md:justify-end shrink-0"><span className="text-[10px] text-foreground/70">{p.readTime}</span><span className="text-[10px] uppercase text-gold-soft">Read →</span></div>
+      </Link> : <a
         href={p.url}
         target="_blank"
         rel="noopener noreferrer"
@@ -151,19 +169,20 @@ export function Blog() {
             Read →
           </span>
         </div>
-      </a>
+      </a>}
+      </Button>
     </Reveal>
   ))}
 </div>
 
 {hasMore && (
   <div className="flex justify-center mt-6">
-    <button
+    <Button variant="outline"
       onClick={() => setShowAll((prev) => !prev)}
       className="text-[10px] uppercase tracking-[0.2em] text-gold/80 hover:text-gold transition-colors border border-border hover:border-gold/40 rounded-full px-5 py-2"
     >
       {showAll ? "Show less" : `Show all (${sortedPosts.length})`}
-    </button>
+    </Button>
   </div>
 )}
       </div>

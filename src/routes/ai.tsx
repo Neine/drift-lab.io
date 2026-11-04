@@ -18,6 +18,8 @@ export const Route = createFileRoute("/ai")({
       { property: "og:title", content: "AI & Machine Learning — Neine Arora" },
       { property: "og:description", content: "Agentic automation, predictive analytics, NLP, and GenAI integration for banking transformation." },
       { property: "og:url", content: "https://drift-lab.io/ai" },
+      { property: 'og:type', content: 'website' },
+      { name: 'twitter:card', content: 'summary' },
     ],
     links: [{ rel: "canonical", href: "https://drift-lab.io/ai" }],
   }),
