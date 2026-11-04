@@ -9,6 +9,7 @@ import { deleteBlogPost, isEditor } from '@/lib/blog.functions';
 import { blogHead, readingTime } from '@/lib/blog';
 import { ArticleBody } from '@/components/portfolio/ArticleBody';
 import { Button } from '@/components/ui/button';
+import { BlogEngagement } from '@/components/portfolio/BlogEngagement';
 
 export const Route = createFileRoute('/blog/$slug')({
   loader: async ({ params, context }) => {
@@ -52,6 +53,7 @@ function ArticlePage() {
     <p className="text-muted-foreground text-sm mb-8">Neine Arora · {post.published_at ? new Date(post.published_at).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }) : ''} · {readingTime(post.content)}</p>
     {post.excerpt && <p className="text-lg leading-relaxed text-foreground mb-10 border-b border-border pb-8">{post.excerpt}</p>}
     <ArticleBody content={post.content} />
+    <BlogEngagement postId={post.id} isAdmin={Boolean(editor)} />
     {editor && <div className="flex flex-wrap gap-3 items-center mt-12 border-t border-border pt-6">
       <Button asChild variant="outline" size="sm"><span className="inline-flex items-center gap-2"><Pencil />Edit post</span></Button>
       <Button variant="outline" size="sm" disabled={deleting} onClick={remove}><Trash2 />{deleting ? 'Deleting…' : 'Delete post'}</Button>

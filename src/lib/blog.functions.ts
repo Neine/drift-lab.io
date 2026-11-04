@@ -14,7 +14,7 @@ export const getPublishedPost = createServerFn({ method: 'GET' })
   .inputValidator((input: unknown) => z.object({ slug: z.string().max(180) }).parse(input))
   .handler(async ({ data }) => {
     const { publicBlogClient } = await import('./blog.server');
-    const result = await publicBlogClient().from('blog_posts').select('slug,title,excerpt,category,content,published_at').eq('slug', data.slug).eq('status', 'published').maybeSingle();
+    const result = await publicBlogClient().from('blog_posts').select('id,slug,title,excerpt,category,content,published_at').eq('slug', data.slug).eq('status', 'published').maybeSingle();
     if (result.error) throw new Error(result.error.message);
     return result.data;
   });

@@ -11,6 +11,7 @@ import { blogHead } from '@/lib/blog';
 export const Route = createFileRoute('/auth')({ head: () => blogHead('Blog editor sign-in', 'Private article publishing for Neine Arora.', true), component: AuthPage });
 function AuthPage() {
   const navigate = useNavigate();
+  const goNext = () => { const back = sessionStorage.getItem('auth-return'); sessionStorage.removeItem('auth-return'); if (back && back.startsWith('/') && !back.startsWith('//')) { window.location.assign(back); return Promise.resolve(); } return navigate({ to: '/blog-editor' }); };
   const [mode, setMode] = useState<'signin' | 'signup' | 'forgot' | 'reset'>('signin');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -18,14 +19,14 @@ function AuthPage() {
   const [busy, setBusy] = useState(false);
   useEffect(() => {
     if (window.location.hash.includes('type=recovery')) { setMode('reset'); return; }
-    void supabase.auth.getUser().then(({ data }) => { if (data.user) void navigate({ to: '/blog-editor' }); });
+    void supabase.auth.getUser().then(({ data }) => { if (data.user) void goNext(); });
   }, [navigate]);
   async function social(provider: 'google' | 'lovable') {
     setBusy(true); setMessage('');
     try {
       const result = await lovable.auth.signInWithOAuth(provider, { redirect_uri: `${window.location.origin}/auth` });
       if (result.error) throw result.error;
-      if (!result.redirected) await navigate({ to: '/blog-editor' });
+      if (!result.redirected) await goNext();
     } catch (error) { setMessage(error instanceof Error ? error.message : 'Sign-in failed.'); }
     finally { setBusy(false); }
   }
@@ -39,16 +40,16 @@ function AuthPage() {
       } else if (mode === 'reset') {
         const { error } = await supabase.auth.updateUser({ password });
         if (error) throw error;
-        await navigate({ to: '/blog-editor' });
+        await goNext();
       } else if (mode === 'signup') {
         const { error, data } = await supabase.auth.signUp({ email, password, options: { emailRedirectTo: `${window.location.origin}/auth` } });
         if (error) throw error;
-        if (data.session) await navigate({ to: '/blog-editor' });
+        if (data.session) await goNext();
         else setMessage('Check your email to confirm your account.');
       } else {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) throw error;
-        await navigate({ to: '/blog-editor' });
+        await goNext();
       }
     } catch (error) { setMessage(error instanceof Error ? error.message : 'Sign-in failed.'); }
     finally { setBusy(false); }
