@@ -1,0 +1,4 @@
+CREATE POLICY "Admin uploads blog media" ON storage.objects FOR INSERT TO authenticated WITH CHECK (bucket_id = 'blog-media' AND public.has_role(auth.uid(), 'admin') AND (storage.foldername(name))[1] = auth.uid()::text);
+CREATE POLICY "Admin reads blog media" ON storage.objects FOR SELECT TO authenticated USING (bucket_id = 'blog-media' AND public.has_role(auth.uid(), 'admin'));
+CREATE POLICY "Admin deletes blog media" ON storage.objects FOR DELETE TO authenticated USING (bucket_id = 'blog-media' AND public.has_role(auth.uid(), 'admin'));
+CREATE POLICY "Readers view published blog media" ON storage.objects FOR SELECT TO anon, authenticated USING (bucket_id = 'blog-media' AND EXISTS (SELECT 1 FROM public.blog_posts WHERE status = 'published' AND position('blog-media://' || storage.objects.name IN content) > 0));

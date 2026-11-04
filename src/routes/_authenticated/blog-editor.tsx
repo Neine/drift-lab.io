@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { createFileRoute, Link, useRouter } from '@tanstack/react-router';
 import { useQueryClient, useSuspenseQuery, queryOptions } from '@tanstack/react-query';
 import { toast } from 'sonner';
@@ -11,6 +11,8 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { ArticleBody } from '@/components/portfolio/ArticleBody';
+import { BlogMediaUpload } from '@/components/portfolio/BlogMediaUpload';
+import { insertMedia } from '@/lib/blog-media';
 
 const editorOptions = queryOptions({ queryKey: ['editor-posts'], queryFn: () => getEditorPosts(), staleTime: 0 });
 const emptyPost: PostInput = { title: '', slug: '', category: 'Insights', excerpt: '', content: '', status: 'draft' };
@@ -26,6 +28,9 @@ function BlogEditor() {
   const [form, setForm] = useState<PostInput>(emptyPost);
   const [preview, setPreview] = useState(false);
   const [busy, setBusy] = useState(false);
+  const [mediaBusy, setMediaBusy] = useState(false);
+  const articleInput = useRef<HTMLTextAreaElement>(null);
+  const cursorPosition = useRef<number | null>(null);
   async function refresh() { await queryClient.invalidateQueries({ queryKey: ['editor-posts'] }); await queryClient.invalidateQueries({ queryKey: ['published-posts'] }); await queryClient.invalidateQueries({ queryKey: ['article'] }); }
   async function save(status: 'draft' | 'published') {
     const parsed = postInput.safeParse({ ...form, status });
@@ -56,16 +61,16 @@ function BlogEditor() {
         <section className="min-w-0">
           <div className="flex flex-wrap gap-2 items-center mb-6">
             <span className="text-xs uppercase text-gold mr-auto">{form.status}</span>
-            <Button variant="outline" size="sm" onClick={() => setPreview(!preview)}>{preview ? <Pencil /> : <Eye />}{preview ? 'Write' : 'Preview'}</Button>
-            <Button variant="outline" size="sm" disabled={busy} onClick={() => save('draft')}><Save />{form.status === 'published' ? 'Unpublish' : 'Save draft'}</Button>
-            <Button size="sm" disabled={busy} onClick={() => save('published')}><Send />{form.status === 'published' ? 'Update post' : 'Publish'}</Button>
+            <Button variant="outline" size="sm" disabled={mediaBusy} onClick={() => setPreview(!preview)}>{preview ? <Pencil /> : <Eye />}{preview ? 'Write' : 'Preview'}</Button>
+            <Button variant="outline" size="sm" disabled={busy || mediaBusy} onClick={() => save('draft')}><Save />{form.status === 'published' ? 'Unpublish' : 'Save draft'}</Button>
+            <Button size="sm" disabled={busy || mediaBusy} onClick={() => save('published')}><Send />{form.status === 'published' ? 'Update post' : 'Publish'}</Button>
             {form.id && <Button variant="ghost" size="icon" aria-label="Delete article" title="Delete article" disabled={busy} onClick={remove}><Trash2 /></Button>}
           </div>
           {preview ? <article className="max-w-3xl"><p className="text-gold text-xs uppercase mb-3">{form.category}</p><h2 className="text-4xl break-words mb-4">{form.title || 'Untitled article'}</h2><p className="text-muted-foreground mb-8">{form.excerpt}</p><ArticleBody content={form.content} /></article> : <div className="space-y-6">
             <div className="space-y-2"><Label htmlFor="title">Title</Label><Input id="title" value={form.title} onChange={e => setForm({ ...form, title: e.target.value, slug: !form.id && form.slug === slugify(form.title) ? slugify(e.target.value) : form.slug })} maxLength={180} /></div>
             <div className="grid sm:grid-cols-2 gap-5"><div className="space-y-2"><Label htmlFor="slug">Article URL</Label><Input id="slug" value={form.slug} onChange={e => setForm({ ...form, slug: e.target.value })} /></div><div className="space-y-2"><Label htmlFor="category">Category</Label><Input id="category" value={form.category} onChange={e => setForm({ ...form, category: e.target.value })} maxLength={80} /></div></div>
             <div className="space-y-2"><Label htmlFor="excerpt">Excerpt</Label><Textarea id="excerpt" value={form.excerpt} onChange={e => setForm({ ...form, excerpt: e.target.value })} maxLength={500} rows={3} /></div>
-            <div className="space-y-2"><Label htmlFor="content">Article</Label><Textarea id="content" className="min-h-96 leading-relaxed" value={form.content} onChange={e => setForm({ ...form, content: e.target.value })} /></div>
+            <div className="space-y-2"><div className="flex items-center justify-between gap-2"><Label htmlFor="content">Article</Label><BlogMediaUpload disabled={busy || mediaBusy} onBusyChange={setMediaBusy} onInsert={markdown => { setForm(current => ({ ...current, content: insertMedia(current.content, markdown, cursorPosition.current ?? current.content.length) })); cursorPosition.current = null; }} /></div><Textarea ref={articleInput} id="content" className="min-h-96 leading-relaxed" value={form.content} onSelect={e => { cursorPosition.current = e.currentTarget.selectionStart; }} onChange={e => setForm({ ...form, content: e.target.value })} /></div>
           </div>}
           {form.id && form.status === 'published' && <Button asChild variant="link" className="mt-5 px-0"><Link to="/blog/$slug" params={{ slug: form.slug }}>View published article →</Link></Button>}
         </section>
